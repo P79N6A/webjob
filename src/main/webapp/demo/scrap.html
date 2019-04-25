@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>scrap</title>
+<link href="../css/query.css" rel="stylesheet">
+<link href="../css/paging.css" rel="stylesheet">
+</head>
+<body>
+    <!--页面容器-->
+    <div class="contents">
+    <!--废弃的项目搜索表单-->
+    <form action="#" id="scrapForm" class="scrapForm">
+        <fieldset>
+            <div class="sort">
+            <label class="label">排序方式：</label>
+                <select name="sort" id="sort">
+                    <option value="name asc">项目名称</option>
+                    <option value="level asc">研发级别</option>
+                    <option value="source asc">项目来源</option>
+                    <option value="projectManagers asc">项目经理</option>
+                    <option value="projectFoundDate desc"selected>立项时间</option>
+                    <option value="projectFinishedDeadline asc">计划结项</option>
+                    <option value="dumpedDate asc">废弃时间</option>
+                </select>
+            </div>
+        </fieldset>
+    </form>
+    <!--废弃的项目搜索表单结束-->
+    <!--废弃的项目列表-->
+    <table class="scrapTable" id="scrapTable" cellspacing="0">
+        <thead>
+            <tr>
+                <th data-name="name">项目名称</th>
+                <th data-name="level">研发级别</th>
+                <th data-name="source">项目来源</th>
+                <th data-name="manager">项目经理</th>
+                <th>时间一览</th>
+            </tr>
+        </thead>
+        <tbody id="pages_tbody"> 
+        </tbody>
+    </table>
+    <div class="clearfix pagination-box">
+        <ul class="pagination pull-right" id="pagination"></ul>
+    </div>
+    <!--废弃的项目列表结束-->
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js/template.js"></script>
+    <script type="text/javascript" src="../js/pagination.js"></script>
+    <script id="pagesList" type="text/html">
+        {{each list}}
+            <tr data-id={{$value.id}}>
+                <td>{{$value.name}}</td>
+                <td>{{$value.level}}</td>
+                <td>{{$value.source}}</td>
+                <td>{{$value.projectManagers}}</td>
+                {{if hasWorkload }}
+                    <td>{{$value.workload}}</td>
+                {{/if}}
+                {{if hasCycleStage }}
+                    <td>{{$value.cycleStage}}</td>
+                {{/if}}
+                {{if hasState }}
+                    <td>{{$value.state}}</td>
+                {{/if}}
+                <td>
+                    <span>立项时间：{{$value.projectFoundDate}}</span>
+                    {{if hasProjectFinishedDate }}
+                        <span>实际结项时间：{{$value.realEndDate}}</span>
+                    {{/if}}
+                    {{if hasProjectFinishedDeadline }}
+                        <span>计划结项时间：{{$value.projectFinishedDeadline}}</span>
+                    {{/if}}
+                    {{if hasDumpedDate }}
+                        <span>废弃时间：{{$value.dumpedDate}}</span>
+                    {{/if}}
+                </td>    
+            </tr>
+        {{/each}}
+    </script>
+    <script type="text/javascript" src="../js/summaryData.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

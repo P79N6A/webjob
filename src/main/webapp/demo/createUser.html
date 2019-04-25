@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>createUser</title>
+<link href="../css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!--页面容器-->
+     <div class="createUserContents">
+        <header class="header">
+            <h1>用户创建</h1>
+        </header>
+        <!--创建用户表单-->
+        <form action="#" class="createUserFrom" id="createUserFrom">
+            <fieldset>
+                <label class="label"><span class="caret">邮箱</span></label>
+                <div class="email">
+                    <input type="text" id="email">
+                    <span class="tag">@konka.com</span>
+                </div>
+                <label class="label"><span class="caret">中文名</span></label>
+                <input type="text" id="chineseName">
+                <label class="label"><span class="caret">部门</span></label>
+                <div class="select">
+                    <span class="selectValue">产品软件所</span>
+                    <select name="department" id="department">
+                        <option value="0">网络运维部</option>
+                        <option value="1">系统软件所</option>
+                        <option value="2">项目管理部</option>
+                        <option value="3">应用软件所</option>
+                        <option value="4" selected="selected">产品软件所</option>
+                        <option value="5">ued部</option>
+                        <option value="6">测试</option>
+                    </select>
+                    <i class="dragdown"></i>
+                </div>
+                <br>
+                <label class="label"><span class="caret">分机</span></label>
+                <input type="text" id="extension">
+                <label class="label"><span class="caret">密码</span></label>
+                <input type="password" id="password" placeholder="请输入密码">
+                <label class="label"><span class="caret">角色</span></label>
+                <div class="select">
+                    <span class="selectValue">开发者</span>
+                    <select name="role" id="role">
+                        <option value="0">admin</option>
+                        <option value="1">项目管理员</option>
+                        <option value="2" selected>开发者</option>
+                    </select>
+                    <i class="dragdown"></i>
+                </div>
+                <br>
+                <input type="button" value="完成" id="createUserComplete">
+            </fieldset>
+        </form>
+        <!--注册表单结束-->
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js/user.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

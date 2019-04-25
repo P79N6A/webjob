@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.CompactPayinfoMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.CompactPayinfo" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="PINDEX" property="pindex" jdbcType="VARCHAR" />
+    <result column="PAYED_AMOUNT" property="payedAmount" jdbcType="DOUBLE" />
+    <result column="PAY_TIME" property="payTime" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="DEPOSIT" property="deposit" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT_ID, PINDEX, PAYED_AMOUNT, PAY_TIME, REMARK, CREATE_TIME, DEPOSIT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_compact_payinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryByCpid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_compact_payinfo
+    where PROJECT_ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_compact_payinfo
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.CompactPayinfo" >
+    insert into hz_compact_payinfo (ID, PROJECT_ID, PINDEX, 
+      PAYED_AMOUNT, PAY_TIME, REMARK, 
+      CREATE_TIME, DEPOSIT)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{pindex,jdbcType=VARCHAR}, 
+      #{payedAmount,jdbcType=DOUBLE}, #{payTime,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{deposit,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.CompactPayinfo"  useGeneratedKeys="true" keyProperty="id">
+    insert into hz_compact_payinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="pindex != null" >
+        PINDEX,
+      </if>
+      <if test="payedAmount != null" >
+        PAYED_AMOUNT,
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pindex != null" >
+        #{pindex,jdbcType=VARCHAR},
+      </if>
+      <if test="payedAmount != null" >
+        #{payedAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.CompactPayinfo" >
+    update hz_compact_payinfo
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="pindex != null" >
+        PINDEX = #{pindex,jdbcType=VARCHAR},
+      </if>
+      <if test="payedAmount != null" >
+        PAYED_AMOUNT = #{payedAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME = #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT = #{deposit,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.CompactPayinfo" >
+    update hz_compact_payinfo
+    set PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      PINDEX = #{pindex,jdbcType=VARCHAR},
+      PAYED_AMOUNT = #{payedAmount,jdbcType=DOUBLE},
+      PAY_TIME = #{payTime,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      DEPOSIT = #{deposit,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

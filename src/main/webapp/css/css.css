@@ -1,0 +1,996 @@
+﻿body { font-family:font-family:Arial, Helvetica, sans-serif; background:#f9fcff; margin:10px;font-size: 12px; margin-top:0px;}
+form {margin:0px;}
+td { 
+	font-size:12px;
+}
+.tableNote{  /* 上方说明表格 */
+	width:700px;
+	BACKGROUND: #ffffff;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableNote2{  /* 上方说明表格 不指定宽度 */
+}
+
+.inputstyle{
+
+    width: 144px;
+
+    height: 41px;
+
+    cursor: pointer;
+
+    font-size: 30px;
+
+    outline: medium none;
+
+    position: absolute;
+
+    filter:alpha(opacity=0);
+
+    -moz-opacity:0;
+
+    opacity:0; 
+
+    left:0px;
+
+    top: 0px;
+
+}
+
+.div1{
+
+float: left;
+
+height: 41px;
+
+background: #f5696c;
+
+width: 144px;
+
+position:relative;
+
+}
+
+.div2{
+
+text-align:center;
+
+padding-top:12px;
+
+font-size:15px;
+
+font-weight:800
+
+}
+
+.tdNote{  /* 上方说明表格的内容 */
+	font-size: 12px;
+	font-weight:bold;
+	color:#0000FF;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdNote2{  /* 上方说明表格的内容 */
+	font-size: 12px;
+	font-weight:bold;
+}
+.successNote{  /* 操作成功的说明文字 */
+	font-size: 12px;
+	color:#0000FF;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.failureNote{  /* 操作失败的说明文字 */
+	font-size: 12px;
+	color:#FF0000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.successNote2{  /* 操作成功的说明文字 */
+	font-size: 12px;
+	color:#0000FF;
+}
+.failureNote2{  /* 操作失败的说明文字 */
+	font-size: 12px;
+	color:#FF0000;
+}
+.nb {
+	border: none;
+
+}
+.tableForm{  /* 提交表单的表格 */
+	width:100%;
+	BACKGROUND: #ffffff;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableForm2{  /* 提交表单的表格 */
+	BACKGROUND: #ffffff;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thForm {  /* 提交表单的表格的表头 */
+	font-size: 12px;
+	background-color: #e1f2f9;
+	background-image:url(../main/images/search_bg.gif);
+	background-repeat:repeat-x;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thForm_kd {  /* 提交表单的表格的表头 */
+	font-size: 12px;
+	height:35px;
+	background-color: #e1f2f9;
+	background-image:url(../main/images/search_bg.gif);
+	background-repeat:repeat-x;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	background-color:#D2E1F4;
+}
+.tdForm {  /* 提交表单的表格的单元格 */
+	font-size: 12px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdForm_kd {  /* 开单界面 */
+	font-size: 12px;
+	height:35px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	background-color:#F0F9FE;
+}
+.tdForm_kd_zc {  /* 开单界面 */
+	font-size: 12px;
+	height:30px;
+	line-height:26px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	background-color:#F0F9FE;
+}
+.tdForm_kd_zc2  {  /* 开单界面 */
+	font-size: 12px;
+	height:30px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: none;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	background-color:#F0F9FE;
+}
+.tdTitle_kd {  /* 开单界面上的 */
+	font-weight: bold;
+	width:70px;
+}
+.tdTitle_kdshort {  /* 开单界面上的 */
+	font-weight: bold;
+	width:40px;
+}
+.tdInput_kd {
+	width: 113px;
+	height: 23px;
+	font-size: 12px;
+}
+
+.tdInput_kdshort {
+	width: 55px;
+	height: 23px;
+	font-size: 12px;
+}
+
+.tdInput_shortshort {
+	width: 30px;
+	height: 20px;
+	font-size: 12px;
+}
+.tdInSel_kd {
+	width: 92px;
+	height: 23px;
+	font-size: 12px;
+	/*position:relative;
+	top:0px;
+	left:0px*/
+}
+
+.tdSelect_kd {
+	width: 110px;
+	height: 23px;
+	font-size: 12px;
+	background-color:#F0F9FE;
+	margin-left:-92px;
+}
+.tablePrint{  /* 提交表单的表格 */
+	width:660;
+	BACKGROUND: #ffffff;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+
+.tdFormRowOne {  /* 提交表单的表格的单元格,第一行的，都有边框 */
+	font-size: 12px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdTitle {  /* 提交表单的表格的字段标题 */
+	font-weight: bold;
+}
+.tdTitle_cx {  /* 查询界面上的 */
+	width:60px;
+}
+.tdTitle_cxred {/*唯一条件*/
+	width: 60px;
+	color:red;
+}
+.tdTitle_cxblue {/*模糊条件*/
+	width: 60px;
+	color:blue;
+}.tdTI_cx{
+  width:160px;
+}
+.tdTI_cxShort{
+  width:130px;
+}
+/*表单样式*/
+.tdInput_cx {
+	width: 90px;
+	font-size: 12px;
+}
+
+.tdInput_Sel {
+	width: 102px;
+	height: 20px;
+	font-size: 12px;
+}
+.tdInput_Select {
+	width: 120px;
+	height: 20px;
+	font-size: 12px;
+	background-color:#FFEEEE;
+	margin-left:-102px;
+}
+.tdInputLong_Select {
+	width: 268px;
+	height: 20px;
+	font-size: 12px;
+	background-color:#FFEEEE;
+	margin-left:-250px;
+}
+.tdTI_show{
+  width:180px;
+}
+.tdTitle_show {/*唯一条件*/
+	width: 80px;
+}
+.tdTI_show2{
+  width:100%;
+}
+/*表单样式*/
+.tdInput {
+	width: 120px;
+	font-size: 12px;
+}
+
+.tdInputDate {
+	width: 71px;
+	font-size: 12px;
+}
+.tdInputDateTime {
+	width: 135px;
+	font-size: 12px;
+}
+.tdInputShort {
+	width: 60px;
+	font-size: 12px;
+}
+.tdInputLong {
+	width: 250px;
+	font-size: 12px;
+}
+.tdInputLong_kd {
+	width: 212px;
+	font-size: 12px;
+}
+.tdInSel_kdLong {
+	width: 232px;
+	height: 20px;
+	font-size: 12px;
+}
+.tdSelect_kdLong {
+	width: 250px;
+	height: 20px;
+	font-size: 12px;
+	background-color:#FFEEEE;
+	margin-left:-232px;
+}
+.tdReadonly{
+	background-color:#e1f2f9
+}
+
+.tdTextarea {
+	width: 250px;
+	height: 80px;
+	font-size: 12px;
+}
+.tdTextareaLong {
+	width: 600px;
+	height: 300px;
+	font-size: 12px;
+}
+.tdSelect {
+	width: 250px;
+	font-size: 12px;
+}
+
+.tdButton {
+	width: 80px;
+	font-size: 12px;
+}
+.tdOther {  /* 提交表单的表格的字段填写说明 */
+	color: #0000FF;
+}
+.pageForm{
+	padding:0 px;
+	margin:0 auto;
+}
+.tableList{  /* 清单表格 */
+	width:100%;
+	color:#FFFFFF;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thList {  /* 清单表格的表头 */
+	color:#000000;
+	font-weight:bold;
+	font-size: 12px;
+	background-color: #e1f2f9;
+	background-image:url(../main/images/search_bg.gif);
+	background-repeat:repeat-x;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdList {  /* 清单表格的单元格 */
+	font-size: 12px;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdListSearch {  /* 用于搜索栏 只有信息提示时 */
+	font-size: 12px;
+	height:51px;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdList_withtop {  /* 清单表格的单元格  有上框线*/
+	font-size: 12px;
+	color:#000000;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdList_nobottom {  /* 清单表格的单元格 没有下框线*/
+	font-size: 12px;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableList2{  /* 清单表格 宽度可设 */
+	color:#FFFFFF;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thList2 {  /* 清单表格的表头 */
+	color:#000000;
+	font-weight:bold;
+	font-size: 12px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdList_red {  /* 清单表格的单元格  用于选单处，把文字变为红色*/
+	font-size: 12px;
+	color:#FF0000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+	font-weight: bold;
+}
+.tdBgRed {
+	 background-color:#F33;
+}
+.tdBgGreen {
+	 background-color:#363;
+}
+.tableRpTitle {  /* 报表标题 */
+	width:100%;
+	font-size: 20px;
+	color:#000000;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdRpTitle {  /* 报表标题表格的单元格 */
+	font-size: 25px;
+	font-weight:bold;
+	text-align:center;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableRpTitle2 {  /* 报表标题 */
+	font-size: 20px;
+	color:#000000;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdRpTitle2 {  /* 报表标题表格的单元格 */
+	font-size: 20px;
+	text-align:center;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+
+.tableOneRow {  /* 四周都有边框的表格，适用于只有一个单元格的表格 */
+	width:100%;
+	color:#FFFFFF;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableOneRowNoButtom {  /* 没有下划线的表格，适用于下面紧接另一个表格 */
+	width:100%;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 0px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableOneRowNoButtom td {
+	padding-left:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.tableOneRowNoButtom A {
+	height:25px;   /*垂直居中*/
+	line-height:25px;    /*垂直居中*/
+	overflow:hidden;  /*垂直居中*/
+	font-weight:bold;
+	background-image: url(../images/dd.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	text-indent: 23px;
+}
+.tableOneRowNoTop {  /* 没有顶线的表格 */
+	width:100%;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tableList1{  /* 清单表格 */
+	width:100%;
+	BACKGROUND:#FFFFFF;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thListNoLeft {  /* 没有左边框 */
+	color:#000000;
+	font-weight:bold;
+	font-size: 12px;
+	background-color: #e1f2f9;
+	background-image:url(../main/images/search_bg.gif);
+	background-repeat:repeat-x;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 0px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.thListLeft {  /* 有左边框 */
+	color:#000000;
+	font-weight:bold;
+	font-size: 12px;
+	background-color: #e1f2f9;
+	background-image:url(../main/images/search_bg.gif);
+	background-repeat:repeat-x;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+.tdListLeft {  /* 清单表格的单元格 */
+	font-size: 12px;
+	color:#000000;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-color: #333333;
+	border-right-color: #333333;
+	border-bottom-color: #333333;
+	border-left-color: #333333;
+}
+
+.notReSubmitDiv {  /* 提交表单后的提示不要重复重复提交的层 */
+	font-size:14px;
+	color: #0000FF;
+}
+
+a{
+	color:#0000FF;
+}
+a:hover{
+	color:#FF0000;
+}
+
+
+.tdButtonActive {  /* 激活的按钮 */
+	background-image: url(../images/ba.gif);
+	width:182px;
+	height:32px;
+	/*background-color: #e1f2f9;*/
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-align: center;
+}
+
+.tdButtonActive A {  /* 激活的按钮上的文字 */
+	color:#000000;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+.tdButtonNormal {  /* 未激活的按钮 */
+	background-image: url(../images/bc.gif);
+	width:182px;
+	height:32px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	text-align: center;
+}
+
+.tdButtonNormal A {  /* 激活的按钮上的文字 */
+	color:#eeeeee;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+.tdButtonActive1 {  /* 激活的按钮 */
+	background-image: url(../images/ba1.gif);
+	width:100px;
+	height:30px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	text-align: center;
+}
+
+.tdButtonActive1 A {  /* 激活的按钮上的文字 */
+	color:#000000;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+.tdButtonNormal1 {  /* 未激活的按钮 */
+	background-image: url(../images/bc1.gif);
+	width:100px;
+	height:30px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	text-align: center;
+}
+
+.tdButtonNormal1 A {  /* 激活的按钮上的文字 */
+	color:#eeeeee;
+	text-decoration:none;
+	font-weight:bold;
+}
+
+
+inputSelectOption{
+	border:#CCCCCC inset 1px;
+	padding:5px;
+	margin:5px;
+	background-color:#FFFFCC;
+}
+inputSelectOption A{
+	color:#0000FF;
+}
+inputSelectOption A:hover{
+	color:#00FF00;
+}
+
+.button {
+	width: 51px;
+	height: 22px;
+	text-align: center;
+	margin: 20px 0 0 110px;
+	background-image: url(../images/icon.gif);
+}
+
+.button_search {
+	width:48px; height:21px; background:url(../images/bn_bg.gif) repeat; color:#000; font-size:12px; text-align:center; line-height:18px; border-top:solid 1px #B1D7FC; border-left:solid 1px #B1D7FC; border-bottom:solid 1px #000000; border-right:solid 1px #000000;
+}
+
+.button_search2 {
+	width:70px; height:21px; background:url(../images/bn_bg.gif) repeat; border:0; color:#000; font-size:12px; text-align:center; line-height:18px; border-top:solid 1px #B1D7FC; border-left:solid 1px #B1D7FC; border-bottom:solid 1px #000000; border-right:solid 1px #000000;
+}
+
+.button_search3 {
+	width:90px; height:21px; background:url(../images/bn_bg.gif) repeat; border:0; color:#000; font-size:12px; text-align:center; line-height:18px; border-top:solid 1px #B1D7FC; border-left:solid 1px #B1D7FC; border-bottom:solid 1px #000000; border-right:solid 1px #000000;
+}
+.button_search4 {
+	width:120px; height:21px; background:url(../images/bn_bg.gif) repeat; border:0; color:#000; font-size:12px; text-align:center; line-height:18px; border-top:solid 1px #B1D7FC; border-left:solid 1px #B1D7FC; border-bottom:solid 1px #000000; border-right:solid 1px #000000;
+}
+.button_search5 {
+	width:160px; height:21px; background:url(../images/bn_bg.gif) repeat; border:0; color:#000; font-size:12px; text-align:center; line-height:18px; border-top:solid 1px #B1D7FC; border-left:solid 1px #B1D7FC; border-bottom:solid 1px #000000; border-right:solid 1px #000000;
+}
+.button_search a:link {
+	color: #FFFFFF;
+	line-height: 25px;
+}
+
+.button_search a:visited {
+	color: #FFFFFF;
+	line-height: 25px;
+}
+
+.button_cancel {
+	height: 22px;
+	width: 50px;
+	border: 0px solid #4987DA;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-image: url(../images/icon.gif);
+	margin: 5px;
+}
+
+.button_cancel_long {
+	height: 22px;
+	width: 91px;
+	border: 0px solid #4987DA;
+	font-size: 12px;
+	color: #FFFFFF;
+	background-image: url(../images/icon.gif);
+	margin: 5px;
+}
+.search_width {
+	width:85px;
+}
+
+.bt_m{ height:34px; background:url(../images/m_top_bg.gif) repeat-x ;}
+.button0{border:none;background:none;padding:0;
+margin:0;width:auto;overflow:visible;text-align:center;
+white-space:nowrap;height:24px;line-height:24px; display:inline; background:url(../images/bg_button.gif) no-repeat  center 0;  cursor:pointer; margin-left:4px; margin-top:6px; float:left; display:inline}
+.button0 span, .button0 em{float:left; display:inlineheight:24px;line-height:24px;margin:0;color:#6d797e; font-weight: normal}
+.button0 span{padding-left:10px;background:url(../images/bg_button.gif) no-repeat 0 0;}
+.button0 em{font-style:normal;padding-right:10px;background:url(../images/bg_button.gif) no-repeat 100% 0;}
+.button1{border:none;background:none;padding:0;display:inline;
+margin:0;width:auto;overflow:visible;text-align:center;float:left; display:inline;
+white-space:nowrap;height:28px;line-height:19px; background:url(../images/1bg_button.gif) no-repeat  center 0;  cursor:pointer; margin-left:4px; margin-top:6px;}
+.button1 span, .button1 em{float:left; display:inline;height:28px;line-height:25px;margin:0;color:#fff; font-weight: normal}
+.button1 span{padding-left:10px;background:url(../images/1bg_button1.gif) no-repeat 0 0;}
+.button1 em{font-style:normal;padding-right:10px;background:url(../images/1bg_button1.gif) no-repeat 100% 0;}

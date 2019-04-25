@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>levels</title>
+<link rel="stylesheet" href="selectPage.css">
+</head>
+<body>
+    <div id="levelChangeBox">
+        <span>请选择级别：</span>
+        <div id="levelChangeDiv">
+            <ul>
+                <li data-value="0">原型机</li>
+                <li data-value="10">C1</li>
+                <li data-value="11">C2</li>
+                <li data-value="12">C3</li>
+                <li data-value="13">C4</li>
+                <li data-value="20">CP1</li>
+                <li data-value="21">CP2</li>
+                <li data-value="22">CP3</li>
+                <li data-value="30">CU1</li>
+                <li data-value="31">CU2</li>
+                <li data-value="40">ZA1</li>
+                <li data-value="50">ZC1</li>
+                <li data-value="51">ZC2</li>
+                <li data-value="52">ZC3</li>
+            </ul>
+        </div>
+        <div class="btnBox">
+            <span class="reverse">反选</span>
+            <span class="cancle">取消已选</span>
+        </div>
+    </div>
+    <input type="hidden" id="hidden">
+    <script type="text/javascript" src="../../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var str=""; 
+            $("li").click(function(){
+                $(this).toggleClass('selected');
+                setHiddenVal();
+            });
+            $(".reverse").click(function(){
+                $("li").toggleClass('selected');
+                setHiddenVal();
+            });
+            $(".cancle").click(function(){
+                $("li").removeClass('selected');
+                setHiddenVal();
+            });
+            str="";
+            str=$(window.parent.document).find("#contents").contents().find("#levels").val();
+            if(str!=undefined){
+            	str=str.split(",");
+            	for(var i=0;i<str.length;i++){
+                	$("li[data-value='"+str[i]+"']").addClass('selected');
+           		}
+            	$("#hidden").val(str);
+            }
+            str="";
+            function setHiddenVal(){
+                $("li").filter(".selected").each(function(){
+                    str+= $(this).attr("data-value")+",";
+                });
+                $("#hidden").val(str);
+                str="";
+            }
+        });
+    </script>
+</body>
+</html>

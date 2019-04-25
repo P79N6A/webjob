@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.ProjectBuildMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.ProjectBuild" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="BUILD_ID" property="buildId" jdbcType="INTEGER" />
+    <result column="BUILD_UNIT" property="buildUnit" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_PIC" property="buildContractPic" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_AMOUNT" property="buildContractAmount" jdbcType="DOUBLE" />
+    <result column="BUILD_CONTRACT_PERIOD" property="buildContractPeriod" jdbcType="VARCHAR" />
+    <result column="PAY_WAY" property="payWay" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR1" property="subcontractor1" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR2" property="subcontractor2" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR3" property="subcontractor3" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR4" property="subcontractor4" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR5" property="subcontractor5" jdbcType="VARCHAR" />
+    <result column="SUB_TYPE" property="subType" jdbcType="VARCHAR" />
+    <result column="BIDPRICE" property="bidprice" jdbcType="DOUBLE" />
+    <result column="LESSPROFIT_RATE" property="lessprofitRate" jdbcType="VARCHAR" />
+    <result column="PROXY_COMPANY" property="proxyCompany" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT_ID, BUILD_ID, BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+    BUILD_CONTRACT_PERIOD, PAY_WAY, SUBCONTRACTOR1, SUBCONTRACTOR2, SUBCONTRACTOR3, SUBCONTRACTOR4, 
+    SUBCONTRACTOR5, SUB_TYPE, BIDPRICE, LESSPROFIT_RATE, PROXY_COMPANY, REMARK, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_build
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_build
+    where PROJECT_ID = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_project_build
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.ProjectBuild" >
+    insert into hz_project_build (ID, PROJECT_ID, BUILD_ID, 
+      BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+      BUILD_CONTRACT_PERIOD, PAY_WAY, SUBCONTRACTOR1, 
+      SUBCONTRACTOR2, SUBCONTRACTOR3, SUBCONTRACTOR4, 
+      SUBCONTRACTOR5, SUB_TYPE, BIDPRICE, 
+      LESSPROFIT_RATE, PROXY_COMPANY, REMARK, 
+      CREATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{buildId,jdbcType=INTEGER}, 
+      #{buildUnit,jdbcType=VARCHAR}, #{buildContractPic,jdbcType=VARCHAR}, #{buildContractAmount,jdbcType=DOUBLE}, 
+      #{buildContractPeriod,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR}, #{subcontractor1,jdbcType=VARCHAR}, 
+      #{subcontractor2,jdbcType=VARCHAR}, #{subcontractor3,jdbcType=VARCHAR}, #{subcontractor4,jdbcType=VARCHAR}, 
+      #{subcontractor5,jdbcType=VARCHAR}, #{subType,jdbcType=VARCHAR}, #{bidprice,jdbcType=DOUBLE}, 
+      #{lessprofitRate,jdbcType=VARCHAR}, #{proxyCompany,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.ProjectBuild" >
+    insert into hz_project_build
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="buildId != null" >
+        BUILD_ID,
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT,
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC,
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT,
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD,
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY,
+      </if>
+      <if test="subcontractor1 != null" >
+        SUBCONTRACTOR1,
+      </if>
+      <if test="subcontractor2 != null" >
+        SUBCONTRACTOR2,
+      </if>
+      <if test="subcontractor3 != null" >
+        SUBCONTRACTOR3,
+      </if>
+      <if test="subcontractor4 != null" >
+        SUBCONTRACTOR4,
+      </if>
+      <if test="subcontractor5 != null" >
+        SUBCONTRACTOR5,
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE,
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE,
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE,
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null" >
+        #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="buildUnit != null" >
+        #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor1 != null" >
+        #{subcontractor1,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor2 != null" >
+        #{subcontractor2,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor3 != null" >
+        #{subcontractor3,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor4 != null" >
+        #{subcontractor4,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor5 != null" >
+        #{subcontractor5,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="bidprice != null" >
+        #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lessprofitRate != null" >
+        #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.ProjectBuild" >
+    update hz_project_build
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null" >
+        BUILD_ID = #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor1 != null" >
+        SUBCONTRACTOR1 = #{subcontractor1,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor2 != null" >
+        SUBCONTRACTOR2 = #{subcontractor2,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor3 != null" >
+        SUBCONTRACTOR3 = #{subcontractor3,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor4 != null" >
+        SUBCONTRACTOR4 = #{subcontractor4,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor5 != null" >
+        SUBCONTRACTOR5 = #{subcontractor5,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.ProjectBuild" >
+    update hz_project_build
+    set PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      BUILD_ID = #{buildId,jdbcType=INTEGER},
+      BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      SUBCONTRACTOR1 = #{subcontractor1,jdbcType=VARCHAR},
+      SUBCONTRACTOR2 = #{subcontractor2,jdbcType=VARCHAR},
+      SUBCONTRACTOR3 = #{subcontractor3,jdbcType=VARCHAR},
+      SUBCONTRACTOR4 = #{subcontractor4,jdbcType=VARCHAR},
+      SUBCONTRACTOR5 = #{subcontractor5,jdbcType=VARCHAR},
+      SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

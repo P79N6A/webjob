@@ -1,0 +1,25 @@
+﻿/* reset */
+html{color:#333;background:#fff;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font-size:12px;line-height:14px;}
+img{border:none;}
+em,strong{font-style:normal;font-weight:normal;}
+li{list-style:none;}
+table {
+	border-collapse:collapse;
+	/* [disabled]border-spacing:0; */
+}h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4, h5, h6{font-size:100%;}
+q:before,q:after{content:'';}/* 消除q前后的内容 */
+button,input,select,textarea{font-size:100%;}/* 使得表单元素在 ie 下能继承字体大小 */
+address,cite,dfn,em,var{font-style:normal;} /* 将斜体扶正 */
+/* link */
+a{color:#36c;text-decoration:none;}
+a:hover{color:#f60;text-decoration:underline;}
+/*布局*/
+.content { background:#ffffff; }
+.login_ct {background:url(../images/loginmain.jpg) no-repeat; width:980px; margin:0 auto; height:422px; position:relative; }
+.leftside{ width:208px; float:left; display:inline; margin-left:6px}
+.rightside{ margin-left:220px;padding-bottom:20px; min-height:420px; _height:420px; margin-right:6px;}

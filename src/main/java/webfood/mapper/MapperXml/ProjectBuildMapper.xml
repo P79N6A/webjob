@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.ProjectBuildMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.ProjectBuild" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="BUILD_ID" property="buildId" jdbcType="INTEGER" />
+    <result column="BUILD_UNIT" property="buildUnit" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_PIC" property="buildContractPic" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_AMOUNT" property="buildContractAmount" jdbcType="DOUBLE" />
+    <result column="BUILD_CONTRACT_PERIOD" property="buildContractPeriod" jdbcType="VARCHAR" />
+    <result column="PAY_WAY" property="payWay" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR1" property="subcontractor1" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR2" property="subcontractor2" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR3" property="subcontractor3" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR4" property="subcontractor4" jdbcType="VARCHAR" />
+    <result column="SUBCONTRACTOR5" property="subcontractor5" jdbcType="VARCHAR" />
+    <result column="SUB_TYPE" property="subType" jdbcType="VARCHAR" />
+    <result column="BIDPRICE" property="bidprice" jdbcType="DOUBLE" />
+    <result column="LESSPROFIT_RATE" property="lessprofitRate" jdbcType="VARCHAR" />
+    <result column="PROXY_COMPANY" property="proxyCompany" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="BUDGET_AMOUNT" property="budgetAmount" jdbcType="DOUBLE" />
+    <result column="SUPERVISION_UNIT" property="supervisionUnit" jdbcType="VARCHAR" />
+    <result column="SUPERVISION_MAN" property="supervisionMan" jdbcType="VARCHAR" />
+    <result column="SUPERVISION_MOBILE" property="supervisionMobile" jdbcType="VARCHAR" />
+    <result column="LINKMAN1" property="linkman1" jdbcType="VARCHAR" />
+    <result column="LINKMAN2" property="linkman2" jdbcType="VARCHAR" />
+    <result column="LINKMAN3" property="linkman3" jdbcType="VARCHAR" />
+    <result column="LINKMAN4" property="linkman4" jdbcType="VARCHAR" />
+    <result column="LINKMAN5" property="linkman5" jdbcType="VARCHAR" />
+    <result column="MOBILE1" property="mobile1" jdbcType="VARCHAR" />
+    <result column="MOBILE2" property="mobile2" jdbcType="VARCHAR" />
+    <result column="MOBILE3" property="mobile3" jdbcType="VARCHAR" />
+    <result column="MOBILE4" property="mobile4" jdbcType="VARCHAR" />
+    <result column="MOBILE5" property="mobile5" jdbcType="VARCHAR" />
+    <result column="DEPOSIT" property="deposit" jdbcType="DOUBLE" />
+    <result column="QSD_PIC" property="qsdPic" jdbcType="VARCHAR" />
+    <result column="BGLXD_PIC" property="bglxdPic" jdbcType="VARCHAR" />
+    <result column="GCQZD_PIC" property="gcqzdPic" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+    <result column="FINISH_PROBLEM" property="finishProblem" jdbcType="VARCHAR" />
+    <result column="FINISH_ADVISE" property="finishAdvise" jdbcType="VARCHAR" />
+    <result column="FINISH_APPLY_DOC" property="finishApplyDoc" jdbcType="VARCHAR" />
+    <result column="FINISH_RECORD_DOC" property="finishRecordDoc" jdbcType="VARCHAR" />
+    <result column="AUDIT_AMOUNT" property="auditAmount" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT_ID, BUILD_ID, BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+    BUILD_CONTRACT_PERIOD, PAY_WAY, SUBCONTRACTOR1, SUBCONTRACTOR2, SUBCONTRACTOR3, SUBCONTRACTOR4, 
+    SUBCONTRACTOR5, SUB_TYPE, BIDPRICE, LESSPROFIT_RATE, PROXY_COMPANY, REMARK, CREATE_TIME, 
+    BUDGET_AMOUNT, SUPERVISION_UNIT, SUPERVISION_MAN, SUPERVISION_MOBILE, LINKMAN1, LINKMAN2, 
+    LINKMAN3, LINKMAN4, LINKMAN5, MOBILE1, MOBILE2, MOBILE3, MOBILE4, MOBILE5, DEPOSIT, 
+    QSD_PIC, BGLXD_PIC, GCQZD_PIC, STATE, PAY_TYPE, FINISH_PROBLEM, FINISH_ADVISE, FINISH_APPLY_DOC, 
+    FINISH_RECORD_DOC, AUDIT_AMOUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_build
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_project_build
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+<select id="queryByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_build
+    where PROJECT_ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPid" parameterType="java.lang.Integer" >
+    delete from hz_project_build
+    where PROJECT_ID = #{id,jdbcType=INTEGER}
+  </delete>  <insert id="insert" parameterType="webfood.model.ProjectBuild" >
+    insert into hz_project_build (ID, PROJECT_ID, BUILD_ID, 
+      BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+      BUILD_CONTRACT_PERIOD, PAY_WAY, SUBCONTRACTOR1, 
+      SUBCONTRACTOR2, SUBCONTRACTOR3, SUBCONTRACTOR4, 
+      SUBCONTRACTOR5, SUB_TYPE, BIDPRICE, 
+      LESSPROFIT_RATE, PROXY_COMPANY, REMARK, 
+      CREATE_TIME, BUDGET_AMOUNT, SUPERVISION_UNIT, 
+      SUPERVISION_MAN, SUPERVISION_MOBILE, LINKMAN1, 
+      LINKMAN2, LINKMAN3, LINKMAN4, 
+      LINKMAN5, MOBILE1, MOBILE2, 
+      MOBILE3, MOBILE4, MOBILE5, 
+      DEPOSIT, QSD_PIC, BGLXD_PIC, 
+      GCQZD_PIC, STATE, PAY_TYPE, 
+      FINISH_PROBLEM, FINISH_ADVISE, FINISH_APPLY_DOC, 
+      FINISH_RECORD_DOC, AUDIT_AMOUNT)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{buildId,jdbcType=INTEGER}, 
+      #{buildUnit,jdbcType=VARCHAR}, #{buildContractPic,jdbcType=VARCHAR}, #{buildContractAmount,jdbcType=DOUBLE}, 
+      #{buildContractPeriod,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR}, #{subcontractor1,jdbcType=VARCHAR}, 
+      #{subcontractor2,jdbcType=VARCHAR}, #{subcontractor3,jdbcType=VARCHAR}, #{subcontractor4,jdbcType=VARCHAR}, 
+      #{subcontractor5,jdbcType=VARCHAR}, #{subType,jdbcType=VARCHAR}, #{bidprice,jdbcType=DOUBLE}, 
+      #{lessprofitRate,jdbcType=VARCHAR}, #{proxyCompany,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{budgetAmount,jdbcType=DOUBLE}, #{supervisionUnit,jdbcType=VARCHAR}, 
+      #{supervisionMan,jdbcType=VARCHAR}, #{supervisionMobile,jdbcType=VARCHAR}, #{linkman1,jdbcType=VARCHAR}, 
+      #{linkman2,jdbcType=VARCHAR}, #{linkman3,jdbcType=VARCHAR}, #{linkman4,jdbcType=VARCHAR}, 
+      #{linkman5,jdbcType=VARCHAR}, #{mobile1,jdbcType=VARCHAR}, #{mobile2,jdbcType=VARCHAR}, 
+      #{mobile3,jdbcType=VARCHAR}, #{mobile4,jdbcType=VARCHAR}, #{mobile5,jdbcType=VARCHAR}, 
+      #{deposit,jdbcType=DOUBLE}, #{qsdPic,jdbcType=VARCHAR}, #{bglxdPic,jdbcType=VARCHAR}, 
+      #{gcqzdPic,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, #{payType,jdbcType=VARCHAR}, 
+      #{finishProblem,jdbcType=VARCHAR}, #{finishAdvise,jdbcType=VARCHAR}, #{finishApplyDoc,jdbcType=VARCHAR}, 
+      #{finishRecordDoc,jdbcType=VARCHAR}, #{auditAmount,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.ProjectBuild" >
+    insert into hz_project_build
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="buildId != null" >
+        BUILD_ID,
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT,
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC,
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT,
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD,
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY,
+      </if>
+      <if test="subcontractor1 != null" >
+        SUBCONTRACTOR1,
+      </if>
+      <if test="subcontractor2 != null" >
+        SUBCONTRACTOR2,
+      </if>
+      <if test="subcontractor3 != null" >
+        SUBCONTRACTOR3,
+      </if>
+      <if test="subcontractor4 != null" >
+        SUBCONTRACTOR4,
+      </if>
+      <if test="subcontractor5 != null" >
+        SUBCONTRACTOR5,
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE,
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE,
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE,
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT,
+      </if>
+      <if test="supervisionUnit != null" >
+        SUPERVISION_UNIT,
+      </if>
+      <if test="supervisionMan != null" >
+        SUPERVISION_MAN,
+      </if>
+      <if test="supervisionMobile != null" >
+        SUPERVISION_MOBILE,
+      </if>
+      <if test="linkman1 != null" >
+        LINKMAN1,
+      </if>
+      <if test="linkman2 != null" >
+        LINKMAN2,
+      </if>
+      <if test="linkman3 != null" >
+        LINKMAN3,
+      </if>
+      <if test="linkman4 != null" >
+        LINKMAN4,
+      </if>
+      <if test="linkman5 != null" >
+        LINKMAN5,
+      </if>
+      <if test="mobile1 != null" >
+        MOBILE1,
+      </if>
+      <if test="mobile2 != null" >
+        MOBILE2,
+      </if>
+      <if test="mobile3 != null" >
+        MOBILE3,
+      </if>
+      <if test="mobile4 != null" >
+        MOBILE4,
+      </if>
+      <if test="mobile5 != null" >
+        MOBILE5,
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT,
+      </if>
+      <if test="qsdPic != null" >
+        QSD_PIC,
+      </if>
+      <if test="bglxdPic != null" >
+        BGLXD_PIC,
+      </if>
+      <if test="gcqzdPic != null" >
+        GCQZD_PIC,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE,
+      </if>
+      <if test="finishProblem != null" >
+        FINISH_PROBLEM,
+      </if>
+      <if test="finishAdvise != null" >
+        FINISH_ADVISE,
+      </if>
+      <if test="finishApplyDoc != null" >
+        FINISH_APPLY_DOC,
+      </if>
+      <if test="finishRecordDoc != null" >
+        FINISH_RECORD_DOC,
+      </if>
+      <if test="auditAmount != null" >
+        AUDIT_AMOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null" >
+        #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="buildUnit != null" >
+        #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor1 != null" >
+        #{subcontractor1,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor2 != null" >
+        #{subcontractor2,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor3 != null" >
+        #{subcontractor3,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor4 != null" >
+        #{subcontractor4,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor5 != null" >
+        #{subcontractor5,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="bidprice != null" >
+        #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lessprofitRate != null" >
+        #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetAmount != null" >
+        #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="supervisionUnit != null" >
+        #{supervisionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionMan != null" >
+        #{supervisionMan,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionMobile != null" >
+        #{supervisionMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman1 != null" >
+        #{linkman1,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2 != null" >
+        #{linkman2,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3 != null" >
+        #{linkman3,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman4 != null" >
+        #{linkman4,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman5 != null" >
+        #{linkman5,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile1 != null" >
+        #{mobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile2 != null" >
+        #{mobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile3 != null" >
+        #{mobile3,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile4 != null" >
+        #{mobile4,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile5 != null" >
+        #{mobile5,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="qsdPic != null" >
+        #{qsdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="bglxdPic != null" >
+        #{bglxdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="gcqzdPic != null" >
+        #{gcqzdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishProblem != null" >
+        #{finishProblem,jdbcType=VARCHAR},
+      </if>
+      <if test="finishAdvise != null" >
+        #{finishAdvise,jdbcType=VARCHAR},
+      </if>
+      <if test="finishApplyDoc != null" >
+        #{finishApplyDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRecordDoc != null" >
+        #{finishRecordDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="auditAmount != null" >
+        #{auditAmount,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.ProjectBuild" >
+    update hz_project_build
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="buildId != null" >
+        BUILD_ID = #{buildId,jdbcType=INTEGER},
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor1 != null" >
+        SUBCONTRACTOR1 = #{subcontractor1,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor2 != null" >
+        SUBCONTRACTOR2 = #{subcontractor2,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor3 != null" >
+        SUBCONTRACTOR3 = #{subcontractor3,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor4 != null" >
+        SUBCONTRACTOR4 = #{subcontractor4,jdbcType=VARCHAR},
+      </if>
+      <if test="subcontractor5 != null" >
+        SUBCONTRACTOR5 = #{subcontractor5,jdbcType=VARCHAR},
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="supervisionUnit != null" >
+        SUPERVISION_UNIT = #{supervisionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionMan != null" >
+        SUPERVISION_MAN = #{supervisionMan,jdbcType=VARCHAR},
+      </if>
+      <if test="supervisionMobile != null" >
+        SUPERVISION_MOBILE = #{supervisionMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman1 != null" >
+        LINKMAN1 = #{linkman1,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2 != null" >
+        LINKMAN2 = #{linkman2,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3 != null" >
+        LINKMAN3 = #{linkman3,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman4 != null" >
+        LINKMAN4 = #{linkman4,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman5 != null" >
+        LINKMAN5 = #{linkman5,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile1 != null" >
+        MOBILE1 = #{mobile1,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile2 != null" >
+        MOBILE2 = #{mobile2,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile3 != null" >
+        MOBILE3 = #{mobile3,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile4 != null" >
+        MOBILE4 = #{mobile4,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile5 != null" >
+        MOBILE5 = #{mobile5,jdbcType=VARCHAR},
+      </if>
+      <if test="deposit != null" >
+        DEPOSIT = #{deposit,jdbcType=DOUBLE},
+      </if>
+      <if test="qsdPic != null" >
+        QSD_PIC = #{qsdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="bglxdPic != null" >
+        BGLXD_PIC = #{bglxdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="gcqzdPic != null" >
+        GCQZD_PIC = #{gcqzdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishProblem != null" >
+        FINISH_PROBLEM = #{finishProblem,jdbcType=VARCHAR},
+      </if>
+      <if test="finishAdvise != null" >
+        FINISH_ADVISE = #{finishAdvise,jdbcType=VARCHAR},
+      </if>
+      <if test="finishApplyDoc != null" >
+        FINISH_APPLY_DOC = #{finishApplyDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRecordDoc != null" >
+        FINISH_RECORD_DOC = #{finishRecordDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="auditAmount != null" >
+        AUDIT_AMOUNT = #{auditAmount,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.ProjectBuild" >
+    update hz_project_build
+    set PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      BUILD_ID = #{buildId,jdbcType=INTEGER},
+      BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      SUBCONTRACTOR1 = #{subcontractor1,jdbcType=VARCHAR},
+      SUBCONTRACTOR2 = #{subcontractor2,jdbcType=VARCHAR},
+      SUBCONTRACTOR3 = #{subcontractor3,jdbcType=VARCHAR},
+      SUBCONTRACTOR4 = #{subcontractor4,jdbcType=VARCHAR},
+      SUBCONTRACTOR5 = #{subcontractor5,jdbcType=VARCHAR},
+      SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      SUPERVISION_UNIT = #{supervisionUnit,jdbcType=VARCHAR},
+      SUPERVISION_MAN = #{supervisionMan,jdbcType=VARCHAR},
+      SUPERVISION_MOBILE = #{supervisionMobile,jdbcType=VARCHAR},
+      LINKMAN1 = #{linkman1,jdbcType=VARCHAR},
+      LINKMAN2 = #{linkman2,jdbcType=VARCHAR},
+      LINKMAN3 = #{linkman3,jdbcType=VARCHAR},
+      LINKMAN4 = #{linkman4,jdbcType=VARCHAR},
+      LINKMAN5 = #{linkman5,jdbcType=VARCHAR},
+      MOBILE1 = #{mobile1,jdbcType=VARCHAR},
+      MOBILE2 = #{mobile2,jdbcType=VARCHAR},
+      MOBILE3 = #{mobile3,jdbcType=VARCHAR},
+      MOBILE4 = #{mobile4,jdbcType=VARCHAR},
+      MOBILE5 = #{mobile5,jdbcType=VARCHAR},
+      DEPOSIT = #{deposit,jdbcType=DOUBLE},
+      QSD_PIC = #{qsdPic,jdbcType=VARCHAR},
+      BGLXD_PIC = #{bglxdPic,jdbcType=VARCHAR},
+      GCQZD_PIC = #{gcqzdPic,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      FINISH_PROBLEM = #{finishProblem,jdbcType=VARCHAR},
+      FINISH_ADVISE = #{finishAdvise,jdbcType=VARCHAR},
+      FINISH_APPLY_DOC = #{finishApplyDoc,jdbcType=VARCHAR},
+      FINISH_RECORD_DOC = #{finishRecordDoc,jdbcType=VARCHAR},
+      AUDIT_AMOUNT = #{auditAmount,jdbcType=DOUBLE}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

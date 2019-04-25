@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>cycle</title>
+<link href="../css/autocomplete.css" rel="stylesheet">
+<link href="../css/cycle.css" rel="stylesheet">
+<link href="../plug-in/My97DatePicker/skin/WdatePicker.css" rel="stylesheet">
+</head>
+<body>
+    <!--页面容器-->
+    <div class="tabContents">
+        <input type="hidden" id="stage" value="createProject">
+        <input type="hidden" id="clickChange">
+        <h1>项目详情</h1>
+        <div class="tab">
+            <ul class="nav nav-tabs">
+                <li class="cycle createProject" data-name="createProject" data-pagenum="1"><a>立项阶段</a></li>
+                <li class="cycle demand" data-name="demand" data-pagenum="2"><a>需求分析</a></li>
+                <li class="cycle summary" data-name="summary" data-pagenum="3"><a>概要设计</a></li>
+                <li class="cycle code" data-name="code" data-pagenum="4"><a>编码阶段</a></li>
+                <li class="cycle test" data-name="test" data-pagenum="5"><a>测试阶段</a></li>
+                <li class="cycle knot" data-name="knot" data-pagenum="6"><a>结项阶段</a></li>
+            </ul>
+            <div data-pagenum="1" class="hide divlabel" id="createProject">
+                <!--创建项目表单-->
+                <form action="#" class="createProjectForm" id="createProjectForm">
+                    <fieldset>
+                        <article class="createProject">
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName"> 
+                                    
+                                </div>
+                                <input type="text" class="inputText" id="projectName" placeholder="可以输入20个以内的文字"/>
+                            </div>
+                            <div class="state select">
+                                <label class="label">项目状态：</label>
+                                <div>
+                                    <span data-value="00">进行中</span>
+                                    <input type="button" value="变更" class="changeBtn cbtn fixed" data-src="../demo/selectPage/states.html">
+                                    <input type="hidden" id="states" name="states">
+                                </div>
+                            </div>
+                            <div class="select">
+                                <label class="label">研发级别</label>
+                                <div class="_select">
+                                    <span class="selectValue">原型机</span>
+                                    <select name="levels" id="levels">
+                                        <option value="0" selected>原型机</option>
+                                        <option value="10">C1</option>
+                                        <option value="11">C2</option>
+                                        <option value="12">C3</option>
+                                        <option value="13">C4</option>
+                                        <option value="20">CP1</option>
+                                        <option value="21">CP2</option>
+                                        <option value="22">CP3</option>
+                                        <option value="30">CU1</option>
+                                        <option value="31">CU2</option>
+                                        <option value="40">ZA1</option>
+                                        <option value="50">ZC1</option>
+                                        <option value="51">ZC2</option>
+                                        <option value="52">ZC3</option>
+                                    </select>
+                                    <i class="dragdown"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="label">立项时间</label>
+                                <div class="projectTime">    
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" id="projectTime"/>
+                            </div>
+                            <div class="select">
+                                <label class="label">项目来源</label>
+                                <div class="_select">
+                                    <span class="selectValue">市场部下单</span>
+                                    <select name="sources" id="sources">
+                                        <option value="0" selected>市场部下单</option>
+                                        <option value="1">内部立项</option>
+                                    </select>
+                                    <i class="dragdown"></i>
+                                </div>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">需求概述</label>
+                                <textarea class="textarea" name="overview" id="overview" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="person">
+                                <label class="label">项目经理</label>
+                                <div>
+                                    <input type="button" value="请选择项目经理" class="changeBtnBefore" id="managerChangeBtn" data-src="../demo/selectPage/manager.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/manager.html"> 
+                                    <input type="hidden" id="manager" name="manager">
+                                </div>
+                            </div>
+                            <div class="person">
+                                <label class="label">程序开发员</label>
+                                <div>
+                                    <input type="button" value="请选择程序开发员" class="changeBtnBefore" id="programDeveloperChangeBtn" data-src="../demo/selectPage/programDeveloper.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/programDeveloper.html"> 
+                                    <input type="hidden" id="programDeveloper" name="programDeveloper">
+                                </div>
+                            </div>
+                            <div class="person">
+                                <label class="label">UED设计师</label>
+                                <div>
+                                     <input type="button" value="请选择UED设计师" class="changeBtnBefore" id="uedDesignerChangeBtn" data-src="../demo/selectPage/uedDesigner.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/uedDesigner.html">
+                                    <input type="hidden" id="uedDesigner" name="uedDesigner">
+                                </div>
+                            </div>
+                            <div class="person">
+                                <label class="label">测试工程师</label>
+                                <div>
+                                    <input type="button" value="请选择测试工程师" class="changeBtnBefore" id="testingEngineerChangeBtn" data-src="../demo/selectPage/testingEngineer.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/testingEngineer.html">
+                                    <input type="hidden" id="testingEngineer" name="testingEngineer">
+                                </div>    
+                            </div>
+                            <div class="person">
+                                <label class="label">项目管理员</label>
+                                <div>
+                                    <input type="button" value="请选择项目管理员" class="changeBtnBefore" id="projectManagerChangeBtn" data-src="../demo/selectPage/projectManager.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/projectManager.html">
+                                    <input type="hidden" id="projectManager" name="projectManager">
+                                </div>
+                            </div>
+                            <div class="person">
+                                <label class="label">项目监管领导</label>
+                                <div>
+                                    <input type="button" value="请选择项目监管领导" class="changeBtnBefore" id="leadershipChangeBtn" data-src="../demo/selectPage/leadership.html">
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-src="../demo/selectPage/leadership.html">
+                                    <input type="hidden" id="leadership" name="leadership">
+                                </div> 
+                            </div>
+                            <div class="plan">
+                                <h2>项目计划</h2>
+                                <div>
+                                    <label class="label">需求分析阶段计划截止时间</label>
+                                    <div class="demandTime">   
+                                    </div>
+                                    <input type="text" class="inputText" onfocus="WdatePicker()" name="demandTime"/>
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-change="demandPlanChange">
+                                </div>
+                                <div>
+                                    <label class="label">概要设计阶段计划截止时间</label>
+                                    <div class="summaryTime">
+                                    </div>
+                                    <input type="text" class="inputText" onfocus="WdatePicker()" name="summaryTime"/>
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-change="summaryPlanChange">
+                                </div>
+                                <div>
+                                    <label class="label">编码阶段计划截止时间</label>
+                                    <div class="codeTime">  
+                                    </div>
+                                    <input type="text" class="inputText" onfocus="WdatePicker()" name="codeTime"/>
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-change="codePlanChange">
+                                </div>
+                                <div>
+                                    <label class="label">测试阶段计划截止时间</label>
+                                    <div class="testTime">   
+                                    </div>
+                                    <input type="text" class="inputText" onfocus="WdatePicker()" name="testTime"/>
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-change="testPlanChange">
+                                </div>
+                                <div>
+                                    <label class="label">结项阶段计划截止时间</label>
+                                    <div class="knotTime">
+                                    </div>
+                                    <input type="text" class="inputText" onfocus="WdatePicker()" name="knotTime"/>
+                                    <input type="button" value="变更" class="changeBtn cbtn" data-change="knotPlanChange">
+                                </div>
+                                <div></div>
+                            </div>
+                            <div class="svnAddress caddress">
+                                <label class="label">SVN仓库地址</label>
+                                <div class="address">  
+                                </div>
+                                <input type="text" class="inputText" name="address"/>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="进入需求分析阶段" id="enterDemand"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--创建项目表单结束-->
+                <!--变更记录-->
+                <section class="change">
+                    <section class="memberChange">
+                        <h2>成员变更<i class="dragPicLeft"></i></h2>
+                        <table class="changeItem" cellspacing="0">
+                            <tr class="ch">
+                                <td>变更次数</td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间:2015-12-16</td>
+                                        </tr>
+                                        <tr>
+                                            <td>变更原因:
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                    <section class="planChange">
+                        <h2>计划变更<i class="dragPicLeft"></i></h2>
+                        <table class="changeItem" cellspacing="0">
+                            <tr class="ch">
+                                <td>变更次数</td>
+                                <td>计划类别</td>
+                                <td>变更前时间</td>
+                                <td>变更后时间</td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因:变更原因变更原因变更原因变更原因变更原因变更原因变更原因变更原因变更原因变更原因变更原因1111111111111111111111111111111111dsaffffffffffffffffffffrgrehfdshgfdnhgfhtrgdskjfhgdsakfhewoisadhfoidsah</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因:</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                                <td>项目中角色</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="4">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>                       
+                    </section>
+                    <section class="stateChange">
+                        <h2>状态变更<i class="dragPicLeft"></i></h2>
+                        <table class="changeItem" cellspacing="0">
+                            <tr class="ch">
+                                <td>变更次数</td>
+                                <td>变更前状态</td>
+                                <td>变更后状态</td>
+                            </tr>
+                            <tr class="ct">
+                                <td>第1次<i class="dragPicLeft"></i></td>
+                                <td>变更人</td>
+                                <td>操作</td>
+                            </tr>
+                            <tr class="cr">
+                                <td colspan="3">
+                                    <table class="changeReason" cellspacing="0">
+                                        <tr>
+                                            <td>变更时间</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="creason">变更原因</td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+                <!--变更记录结束-->
+            </div>
+            <div data-pagenum="2" class="hide divlabel" id="demand">
+                <!--需求分析表单-->
+                <form action="#" class="demandForm" id="demandForm">
+                    <fieldset>
+                        <article class="demand">
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">
+                                </div>
+                            </div>
+                            <div class="cfile">
+                                <label class="label">需求规格书</label>
+                                <div class="demandFile">
+                                </div>
+                                <div class="file">
+                                    <span class="fileSelect">选择</span>
+                                    <input type="file" name="demandFile" class="demandFile"/>
+                                </div>
+                                <input type="button" value="变更" class="changeBtn cbtn" data-change="demandChange">
+                            </div>
+                            <div class="caddress">
+                                <label class="label">SVN地址</label>
+                                <div class="address">   
+                                </div>
+                                <input type="text" class="inputText" name="address"/>
+                            </div>
+                            <div>
+                                <label class="label">实际开始时间</label>
+                                <div class="startTime">
+                                    
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="startTime"/>
+                            </div>
+                            <div>
+                                <label class="label">实际结束时间</label>
+                                <div class="endTime">
+                                    
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="endTime"/>
+                            </div>
+                            <div>
+                                <input type="submit" value="进入概要设计阶段" id="enterSummary"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--需求分析表单结束-->
+                <!--变更记录-->
+                <section class="change">
+                    <section class="record">
+                        <h3><span>第<span>一</span>次变更</span></h3>
+                        <div>
+                            <h4>概要设计变更项</h4>
+                            <p class="changeItem">
+                                1、you are right!
+                            </p>
+                        </div>
+                        <div>
+                            <h4>变更原因</h4>
+                            <p class="reason">
+                                原因1：在哪里呢？
+                            </p>
+                        </div>
+                        <div>
+                            <h4>概要设计文档</h4>
+                            <p class="isChange">
+                                未变更
+                            </p>
+                        </div>
+                        <div></div>   
+                    </section>
+                    <section class="record">
+                        <h3><span>第<span>二</span>次变更</span></h3>
+                        <div>
+                            <h4>概要设计变更项</h4>
+                            <p class="changeItem">
+                                1、you are right!
+                            </p>
+                        </div>
+                        <div>
+                            <h4>变更原因</h4>
+                            <p class="reason">
+                                原因1：在哪里呢？
+                            </p>
+                        </div>
+                        <div>
+                            <h4>概要设计文档</h4>
+                            <p class="isChange">
+                                未变更
+                            </p>
+                        </div>
+                        <div></div>   
+                    </section>
+                </section>
+                <!--变更记录结束-->
+            </div>
+            <div data-pagenum="3" class="hide divlabel" id="summary">
+                <!--概要设计表单-->
+                <form action="#" class="summaryForm" id="summaryForm">
+                    <fieldset>
+                        <article class="summary">
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">
+                                </div>
+                            </div>
+                            <div class="cfile">
+                                <label class="label">概要设计书</label>
+                                <div class="summaryFile">
+                                </div>
+                                <div class="file">
+                                    <span class="fileSelect">选择</span>
+                                    <input type="file" name="summaryFile" class="summaryFile"/>
+                                </div>
+                                <input type="button" value="变更" class="changeBtn cbtn" data-change="summaryChange">
+                            </div>
+                            <div class="caddress">
+                                <label class="label">SVN地址</label>
+                                <div class="address">
+                                </div>
+                                <input type="text" class="inputText" name="address"/>
+                            </div>
+                            <div>
+                                <label class="label">实际开始时间</label>
+                                <div class="startTime">
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="startTime"/>
+                            </div>
+                            <div>
+                                <label class="label">实际结束时间</label>
+                                <div class="endTime">
+                                    hgsrews
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="endTime"/>
+                            </div>
+                            <div>
+                                <input type="submit" value="进入编码阶段" id="enterCode"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--概要设计表单结束-->
+                <!--变更记录-->
+                <section class="change">
+                    <section class="record">
+                        <h3><span>第<span>一</span>次变更</span></h3>
+                        <div>
+                            <h4>概要设计变更项</h4>
+                            <p class="changeItem">
+                                1、you are right!
+                            </p>
+                        </div>
+                        <div>
+                            <h4>变更原因</h4>
+                            <p class="reason">
+                                原因1：在哪里呢？
+                            </p>
+                        </div>
+                        <div>
+                            <h4>概要设计文档</h4>
+                            <p class="isChange">
+                                未变更
+                            </p>
+                        </div>
+                        <div></div>
+                    </section>
+                    <section class="record">
+                        <h3><span>第<span>二</span>次变更</span></h3>
+                        <div>
+                            <h4>概要设计变更项</h4>
+                            <p class="changeItem">
+                                1、you are right!
+                            </p>
+                        </div>
+                        <div>
+                            <h4>变更原因</h4>
+                            <p class="reason">
+                                原因1：在哪里呢？
+                            </p>
+                        </div>
+                        <div>
+                            <h4>概要设计文档</h4>
+                            <p class="isChange">
+                                未变更
+                            </p>
+                        </div>
+                        <div></div> 
+                    </section>
+                </section>
+                <!--变更记录结束-->
+            </div>
+            <div data-pagenum="4" class="hide divlabel" id="code">
+                <!--编码表单-->
+                <form action="#" class="codeForm" id="codeForm">
+                    <fieldset>
+                        <article class="code">
+                            <div class="info">
+                                <img src="../images/code.png" height="207" width="336">
+                                <p>编码中......</p>
+                            </div>
+                            <input type="submit" value="完成编码" id="enterTest"/>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--编码表单结束-->
+            </div>
+            <div data-pagenum="5" class="hide divlabel" id="test">
+                <!--测试表单-->
+                <form action="#" class="testForm" id="testForm" data-flag="divue">
+                    <fieldset>
+                        <article class="test">
+                            <div>
+                                <legend class="formLegend">第<span>一</span>轮测试</legend>
+                            </div>
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">     
+                                </div>
+                            </div>
+                            <div>
+                                <label class="label">实际开始时间</label>
+                                <div class="startTime">       
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="startTime"/>
+                            </div>
+                            <div>
+                                <input type="button" value="通过测试" id="pass"/>
+                                <input type="button" value="未通过测试" id="fail"/>
+                                <div></div>
+                            </div>
+                            <div class="pass caddress">
+                                <label class="label">电子流地址</label>
+                                <div class="flowAddress">
+                                </div>
+                                <input type="text" class="inputText" name="flowAddress"/>
+                            </div>
+                            <div class="pass caddress">
+                                <label class="label">测试文件SVN地址</label>
+                                <div class="address">      
+                                </div>
+                                <input type="text" class="inputText" name="address"/>
+                            </div>
+                            <div class="pass cfile">
+                                <label class="label">测试文件</label>
+                                <div class="testFile">
+                                </div>
+                                <div class="file">
+                                    <span class="fileSelect">选择</span>
+                                    <input type="file" name="testFile" class="testFile"/>
+                                </div>
+                                <input type="button" value="变更" class="changeBtn cbtn" data-change="testChange">
+                            </div>
+                            <div class="pass">
+                                <label class="label">实际结束时间</label>
+                                <div class="endTime">   
+                                </div>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="endTime"/>
+                            </div>
+                            <div class="pass">
+                                <input type="button" value="进入结项阶段" id="enterKnot"/>
+                            </div>
+                            <div class="fail ctextarea">
+                                <label class="label">测试存在问题</label>
+                                <textarea class="textarea" name="item" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="fail">
+                                <label class="label">实际结束时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="endTime"/>
+                            </div>
+                            <div class="fail">
+                                <input type="button" value="进入下一轮测试" id="enterNext"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--测试表单结束-->
+                <!--变更记录-->
+                <section class="change">
+                    <section class="record">
+                        <h3><span>第<span>一</span>轮测试存在问题</span></h3>
+                        <p class="problem">
+                            第一轮测试存在的问题1:abc
+                        </p>
+                        <div></div>
+                    </section>
+                    <section class="record">
+                        <h3><span>第<span>二</span>轮测试存在问题</span></h3>
+                        <p class="problem">
+                            第一轮测试存在的问题1:abc
+                        </p>
+                        <div></div>
+                    </section>
+                </section>
+                <!--变更记录结束-->
+            </div>
+            <div data-pagenum="6" class="hide divlabel" id="knot">
+                <!--结项表单-->
+                <form action="#" class="knotForm" id="knotForm">
+                    <fieldset>
+                        <article class="knot">
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">      
+                                </div>
+                            </div>
+                            <div class="distribution">
+                                <label class="label">UED设计师工作比例分配</label>
+                                <div>
+                                    <label class="label">张大千</label>
+                                    <input type="text" class="inputText" id="UEDName1"/>
+                                </div>
+                                <div>
+                                    <label class="label">诸葛亮</label>
+                                    <input type="text" class="inputText" id="UEDName2"/>
+                                </div>
+                                <div>
+                                    <label class="label">张择端</label>
+                                    <input type="text" class="inputText" id="UEDName3"/>
+                                </div>
+                            </div>
+                            <div class="distribution">
+                                <label class="label">程序开发员工作比例分配</label>
+                                <div>
+                                    <label class="label">张大千</label>
+                                    <input type="text" class="inputText" id="developerName1"/>
+                                </div>
+                                <div>
+                                    <label class="label">诸葛亮</label>
+                                    <input type="text" class="inputText" id="developerName2"/>
+                                </div>
+                                <div>
+                                    <label class="label">张择端</label>
+                                    <input type="text" class="inputText" id="developerName3"/>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="label">实际结项时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="knotTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">项目成果简要说明</label>
+                                <textarea class="textarea" name="resultDescription" id="resultDescription" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="enterComplete"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>       
+                    </fieldset>
+                </form>
+                <!--结项表单结束-->
+            </div>
+        </div>
+        <div class="changePage">
+            <section class="demandPlanChange">
+                <!--需求分析阶段计划截止时间变更-->
+                <form action="#" class="demandPlanChangeForm" id="demandPlanChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">需求分析阶段计划截止时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="demandTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">需求分析阶段计划变更原因</label>
+                                <textarea class="textarea" name="changeReason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveDemandPlanChange"/>
+                            </div>
+                            <div class="clear"></div>           
+                        </article>
+                    </fieldset>
+                </form>
+                <!--需求分析阶段计划截止时间变更结束-->
+            </section>
+            <section class="summaryPlanChange">
+                <!--概要设计阶段计划截止时间变更表单-->
+                <form action="#" class="summaryPlanChangeForm" id="summaryPlanChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">概要设计阶段计划截止时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="summaryTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">概要设计阶段计划变更原因</label>
+                                <textarea class="textarea" name="changeReason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveSummaryPlanChange"/>
+                            </div>
+                            <div class="clear"></div>           
+                        </article>
+                    </fieldset>
+                </form>
+                <!--概要设计阶段计划截止时间变更表单结束-->
+            </section>
+            <section class="codePlanChange">
+                <!--编码阶段计划截止时间变更表单-->
+                <form action="#" class="codePlanChangeForm" id="codePlanChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">编码阶段计划截止时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="codeTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">编码阶段计划变更原因</label>
+                                <textarea class="textarea" name="changeReason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveCodePlanChange"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--编码阶段计划截止时间变更表单-->
+            </section>
+            <section class="testPlanChange">
+                <!--测试阶段计划截止时间变更表单-->
+                <form action="#" class="testPlanChangeForm" id="testPlanChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">测试阶段计划截止时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="testTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">测试阶段计划变更原因</label>
+                                <textarea class="textarea" name="changeReason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveTestPlanChange"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article> 
+                    </fieldset>
+                </form>
+                <!--测试阶段计划截止时间变更表单结束-->
+            </section>
+            <section class="knotPlanChange">
+                <form action="#" class="knotPlanChangeForm" id="knotPlanChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">项目计划结项截止时间</label>
+                                <input type="text" class="inputText" onfocus="WdatePicker()" name="knotTime"/>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">项目计划结项变更原因</label>
+                                <textarea class="textarea" name="changeReason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveKnotPlanChange"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>   
+                    </fieldset>
+                </form>
+            </section>
+            <section class="demandChange">
+                <!--需求分析变更表单-->
+                <form action="demand.html" class="demandChangeForm" id="demandChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">       
+                                </div>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">需求变更项</label>
+                                <textarea class="textarea" name="item" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">变更原因</label>
+                                <textarea class="textarea" name="reason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="cfile">
+                                <label class="label">新的需求文档</label>
+                                <div class="demandFile">
+                                </div>
+                                <div class="file">
+                                    <span class="fileSelect">选择</span>
+                                    <input type="file" name="demandFile" class="demandFile"/>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveDemandChange"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article> 
+                    </fieldset>
+                </form>
+                <!--需求分析变更表单结束-->
+            </section>
+            <section class="summaryChange">
+                <!--概要设计变更表单-->
+                <form action="summary.html" class="summaryChangeForm" id="summaryChangeForm">
+                    <fieldset>
+                        <article>
+                            <div>
+                                <label class="label">项目名称</label>
+                                <div class="projectName">  
+                                </div>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">概要设计变更项</label>
+                                <textarea class="textarea" name="item" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="ctextarea">
+                                <label class="label">变更原因</label>
+                                <textarea class="textarea" name="reason" placeholder="1000字以内"></textarea>
+                                <div></div>
+                            </div>
+                            <div class="cfile">
+                                <label class="label">新的概要设计文档</label>
+                                <div class="summaryFile">
+                                </div>
+                                <div class="file">
+                                    <span class="fileSelect">选择</span>
+                                    <input type="file" name="summaryFile" class="summaryFile"/>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="submit" value="保存" id="saveSummaryChang"/>
+                            </div>
+                            <div class="clear"></div>
+                        </article>
+                    </fieldset>
+                </form>
+                <!--概要设计变更表单结束-->
+            </section>
+        </div>
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script>
+    /*
+    *stage="createProject" 创建项目阶段
+    *stage="demand" 需求分析阶段
+    *stage="summary" 概要设计阶段
+    *stage="code" 编码阶段
+    *stage="test" 测试阶段
+    *stage="knot" 结项阶段
+    *stage="complete"全部完成
+    */
+    var stage="createProject";
+    </script>
+    <script type="text/javascript" src="../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../js/jquery.autocomplete.js"></script>
+    <script type="text/javascript">
+    var data ="";
+    var url = "";
+    $(function(){
+        $.post(url,{value:$('#manager,#programDeveloper,#uedDesigner,#testingEngineer,#projectManager,#leadership').val()},function(data){
+            window.data=data;
+        });
+        $('#manager,#programDeveloper,#uedDesigner,#testingEngineer,#projectManager,#leadership').autocomplete(data, {
+            max: 6,    
+            minChars: 1,  
+            matchSubset:1,
+            //minLength: 1,                 
+            multiple: false, 
+            width: 334, 
+            multipleSeparator:';',
+            multiple:true,                  
+            //matchCase :true,                  //提示的宽度，溢出隐藏
+            scrollHeight: 300,   //提示的高度，溢出显示滚动条
+            matchContains: false,    //包含匹配，就是data参数里的数据，是否只要包含文本框里的数据就显示
+            autoFill: false  //自动填充
+        });
+    });
+    </script>
+    <script type="text/javascript" src="../plug-in/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="../js/pmsmain.js"></script>
+    <script type="text/javascript" src="../js/cycle.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

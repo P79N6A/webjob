@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<widget appId="11556924" channelCode="0000" height="480" pid="" sreensize="4.5" version="00.00.0000" viewmode="application" widgetId="" width="320">
+	
+	<name>myFarm</name>
+	<description/>
+	<author email=""> </author>
+	<icon src="icon.png"/>
+	<license href=""/>
+	<content encoding="utf-8" src="index"/>
+	<updateurl>http://192.168.1.106:8080/index</updateurl>
+	<logserverip>192.168.1.103</logserverip> 
+	<showmyspace>false</showmyspace>
+	<obfuscation>true</obfuscation>
+	<bgcolor>#fefefe</bgcolor>
+	<orientation>15</orientation>
+<debug/>
+<partobfuscation/>
+<webapp/>
+</widget>

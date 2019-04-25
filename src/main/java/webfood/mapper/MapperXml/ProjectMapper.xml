@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.Project" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT" property="project" jdbcType="VARCHAR" />
+    <result column="PROJECT_PIC" property="projectPic" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="PROSPECT_UNIT" property="prospectUnit" jdbcType="VARCHAR" />
+    <result column="DESIGIN_UNIT" property="desiginUnit" jdbcType="VARCHAR" />
+    <result column="BUDGET_UNIT" property="budgetUnit" jdbcType="VARCHAR" />
+    <result column="BUDGET_AMOUNT" property="budgetAmount" jdbcType="DOUBLE" />
+    <result column="BUILD_UNIT" property="buildUnit" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_PIC" property="buildContractPic" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_AMOUNT" property="buildContractAmount" jdbcType="DOUBLE" />
+    <result column="BUILD_CONTRACT_PERIOD" property="buildContractPeriod" jdbcType="VARCHAR" />
+    <result column="PAY_WAY" property="payWay" jdbcType="VARCHAR" />
+    <result column="AUDIT_AMOUNT" property="auditAmount" jdbcType="DOUBLE" />
+    <result column="SUPERVISION_UNIT" property="supervisionUnit" jdbcType="VARCHAR" />
+    <result column="BUILD_BEGIN_TIME" property="buildBeginTime" jdbcType="VARCHAR" />
+    <result column="BUILD_FINISH_TIME" property="buildFinishTime" jdbcType="VARCHAR" />
+    <result column="COMPLETE_CHECK_TIME" property="completeCheckTime" jdbcType="VARCHAR" />
+    <result column="COMPLETE_CHECK_PIC" property="completeCheckPic" jdbcType="VARCHAR" />
+    <result column="CITY_SUPPLY" property="citySupply" jdbcType="DOUBLE" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="STREET_SUPPLY" property="streetSupply" jdbcType="DOUBLE" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="RECORD_CODE" property="recordCode" jdbcType="VARCHAR" />
+    <result column="BDST_NUM" property="bdstNum" jdbcType="INTEGER" />
+    <result column="MANAGER" property="manager" jdbcType="VARCHAR" />
+    <result column="PROJECT_BODY" property="projectBody" jdbcType="VARCHAR" />
+    <result column="FINISH_PROBLEM" property="finishProblem" jdbcType="VARCHAR" />
+    <result column="FINISH_ADVISE" property="finishAdvise" jdbcType="VARCHAR" />
+    <result column="FINISH_APPLY_DOC" property="finishApplyDoc" jdbcType="VARCHAR" />
+    <result column="FINISH_RECORD_DOC" property="finishRecordDoc" jdbcType="VARCHAR" />
+    <result column="AGREE_AMOUNT" property="agreeAmount" jdbcType="DECIMAL" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+    <result column="QSD_PIC" property="qsdPic" jdbcType="VARCHAR" />
+    <result column="BGLXD_PIC" property="bglxdPic" jdbcType="VARCHAR" />
+    <result column="GCQZD_PIC" property="gcqzdPic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT, PROJECT_PIC, ADDRESS, TYPE, PROSPECT_UNIT, DESIGIN_UNIT, BUDGET_UNIT, 
+    BUDGET_AMOUNT, BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, BUILD_CONTRACT_PERIOD, 
+    PAY_WAY, AUDIT_AMOUNT, SUPERVISION_UNIT, BUILD_BEGIN_TIME, BUILD_FINISH_TIME, COMPLETE_CHECK_TIME, 
+    COMPLETE_CHECK_PIC, CITY_SUPPLY, STATE, STREET_SUPPLY, REMARK, PROJECT_CODE, RECORD_CODE, 
+    BDST_NUM, MANAGER, PROJECT_BODY, FINISH_PROBLEM, FINISH_ADVISE, FINISH_APPLY_DOC, 
+    FINISH_RECORD_DOC, AGREE_AMOUNT, CREATE_TIME, UPDATE_TIME, QSD_PIC, BGLXD_PIC, GCQZD_PIC
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project order by id desc
+  </select>
+   <select id="query" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project where ${sqlWhere}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_project
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.Project" >
+    insert into hz_project (ID, PROJECT, PROJECT_PIC, 
+      ADDRESS, TYPE, PROSPECT_UNIT, 
+      DESIGIN_UNIT, BUDGET_UNIT, BUDGET_AMOUNT, 
+      BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+      BUILD_CONTRACT_PERIOD, PAY_WAY, AUDIT_AMOUNT, 
+      SUPERVISION_UNIT, BUILD_BEGIN_TIME, BUILD_FINISH_TIME, 
+      COMPLETE_CHECK_TIME, COMPLETE_CHECK_PIC, CITY_SUPPLY, 
+      STATE, STREET_SUPPLY, REMARK, 
+      PROJECT_CODE, RECORD_CODE, BDST_NUM, 
+      MANAGER, PROJECT_BODY, FINISH_PROBLEM, 
+      FINISH_ADVISE, FINISH_APPLY_DOC, FINISH_RECORD_DOC, 
+      AGREE_AMOUNT, CREATE_TIME, UPDATE_TIME, 
+      QSD_PIC, BGLXD_PIC, GCQZD_PIC
+      )
+    values (#{id,jdbcType=INTEGER}, #{project,jdbcType=VARCHAR}, #{projectPic,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{prospectUnit,jdbcType=VARCHAR}, 
+      #{desiginUnit,jdbcType=VARCHAR}, #{budgetUnit,jdbcType=VARCHAR}, #{budgetAmount,jdbcType=DOUBLE}, 
+      #{buildUnit,jdbcType=VARCHAR}, #{buildContractPic,jdbcType=VARCHAR}, #{buildContractAmount,jdbcType=DOUBLE}, 
+      #{buildContractPeriod,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR}, #{auditAmount,jdbcType=DOUBLE}, 
+      #{supervisionUnit,jdbcType=VARCHAR}, #{buildBeginTime,jdbcType=VARCHAR}, #{buildFinishTime,jdbcType=VARCHAR}, 
+      #{completeCheckTime,jdbcType=VARCHAR}, #{completeCheckPic,jdbcType=VARCHAR}, #{citySupply,jdbcType=DOUBLE}, 
+      #{state,jdbcType=INTEGER}, #{streetSupply,jdbcType=DOUBLE}, #{remark,jdbcType=VARCHAR}, 
+      #{projectCode,jdbcType=VARCHAR}, #{recordCode,jdbcType=VARCHAR}, #{bdstNum,jdbcType=INTEGER}, 
+      #{manager,jdbcType=VARCHAR}, #{projectBody,jdbcType=VARCHAR}, #{finishProblem,jdbcType=VARCHAR}, 
+      #{finishAdvise,jdbcType=VARCHAR}, #{finishApplyDoc,jdbcType=VARCHAR}, #{finishRecordDoc,jdbcType=VARCHAR}, 
+      #{agreeAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, 
+      #{qsdPic,jdbcType=VARCHAR}, #{bglxdPic,jdbcType=VARCHAR}, #{gcqzdPic,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.Project" useGeneratedKeys="true" keyProperty="id"  >
+    insert into hz_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="project != null" >
+        PROJECT,
+      </if>
+      <if test="projectPic != null" >
+        PROJECT_PIC,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="prospectUnit != null" >
+        PROSPECT_UNIT,
+      </if>
+      <if test="desiginUnit != null" >
+        DESIGIN_UNIT,
+      </if>
+      <if test="budgetUnit != null" >
+        BUDGET_UNIT,
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT,
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT,
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC,
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT,
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD,
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY,
+      </if>
+      <if test="auditAmount != null" >
+        AUDIT_AMOUNT,
+      </if>
+      <if test="supervisionUnit != null" >
+        SUPERVISION_UNIT,
+      </if>
+      <if test="buildBeginTime != null" >
+        BUILD_BEGIN_TIME,
+      </if>
+      <if test="buildFinishTime != null" >
+        BUILD_FINISH_TIME,
+      </if>
+      <if test="completeCheckTime != null" >
+        COMPLETE_CHECK_TIME,
+      </if>
+      <if test="completeCheckPic != null" >
+        COMPLETE_CHECK_PIC,
+      </if>
+      <if test="citySupply != null" >
+        CITY_SUPPLY,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="streetSupply != null" >
+        STREET_SUPPLY,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE,
+      </if>
+      <if test="recordCode != null" >
+        RECORD_CODE,
+      </if>
+      <if test="bdstNum != null" >
+        BDST_NUM,
+      </if>
+      <if test="manager != null" >
+        MANAGER,
+      </if>
+      <if test="projectBody != null" >
+        PROJECT_BODY,
+      </if>
+      <if test="finishProblem != null" >
+        FINISH_PROBLEM,
+      </if>
+      <if test="finishAdvise != null" >
+        FINISH_ADVISE,
+      </if>
+      <if test="finishApplyDoc != null" >
+        FINISH_APPLY_DOC,
+      </if>
+      <if test="finishRecordDoc != null" >
+        FINISH_RECORD_DOC,
+      </if>
+      <if test="agreeAmount != null" >
+        AGREE_AMOUNT,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="qsdPic != null" >
+        QSD_PIC,
+      </if>
+      <if test="bglxdPic != null" >
+        BGLXD_PIC,
+      </if>
+      <if test="gcqzdPic != null" >
+        GCQZD_PIC,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="project != null" >
+        #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="projectPic != null" >
+        #{projectPic,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="prospectUnit != null" >
+        #{prospectUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="desiginUnit != null" >
+        #{desiginUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetUnit != null" >
+        #{budgetUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetAmount != null" >
+        #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildUnit != null" >
+        #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="auditAmount != null" >
+        #{auditAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="supervisionUnit != null" >
+        #{supervisionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildBeginTime != null" >
+        #{buildBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="buildFinishTime != null" >
+        #{buildFinishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckTime != null" >
+        #{completeCheckTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckPic != null" >
+        #{completeCheckPic,jdbcType=VARCHAR},
+      </if>
+      <if test="citySupply != null" >
+        #{citySupply,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="streetSupply != null" >
+        #{streetSupply,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bdstNum != null" >
+        #{bdstNum,jdbcType=INTEGER},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectBody != null" >
+        #{projectBody,jdbcType=VARCHAR},
+      </if>
+      <if test="finishProblem != null" >
+        #{finishProblem,jdbcType=VARCHAR},
+      </if>
+      <if test="finishAdvise != null" >
+        #{finishAdvise,jdbcType=VARCHAR},
+      </if>
+      <if test="finishApplyDoc != null" >
+        #{finishApplyDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRecordDoc != null" >
+        #{finishRecordDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeAmount != null" >
+        #{agreeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="qsdPic != null" >
+        #{qsdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="bglxdPic != null" >
+        #{bglxdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="gcqzdPic != null" >
+        #{gcqzdPic,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.Project" >
+    update hz_project
+    <set >
+      <if test="project != null" >
+        PROJECT = #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="projectPic != null" >
+        PROJECT_PIC = #{projectPic,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="prospectUnit != null" >
+        PROSPECT_UNIT = #{prospectUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="desiginUnit != null" >
+        DESIGIN_UNIT = #{desiginUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetUnit != null" >
+        BUDGET_UNIT = #{budgetUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="auditAmount != null" >
+        AUDIT_AMOUNT = #{auditAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="supervisionUnit != null" >
+        SUPERVISION_UNIT = #{supervisionUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildBeginTime != null" >
+        BUILD_BEGIN_TIME = #{buildBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="buildFinishTime != null" >
+        BUILD_FINISH_TIME = #{buildFinishTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckTime != null" >
+        COMPLETE_CHECK_TIME = #{completeCheckTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckPic != null" >
+        COMPLETE_CHECK_PIC = #{completeCheckPic,jdbcType=VARCHAR},
+      </if>
+      <if test="citySupply != null" >
+        CITY_SUPPLY = #{citySupply,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="streetSupply != null" >
+        STREET_SUPPLY = #{streetSupply,jdbcType=DOUBLE},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        RECORD_CODE = #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="bdstNum != null" >
+        BDST_NUM = #{bdstNum,jdbcType=INTEGER},
+      </if>
+      <if test="manager != null" >
+        MANAGER = #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectBody != null" >
+        PROJECT_BODY = #{projectBody,jdbcType=VARCHAR},
+      </if>
+      <if test="finishProblem != null" >
+        FINISH_PROBLEM = #{finishProblem,jdbcType=VARCHAR},
+      </if>
+      <if test="finishAdvise != null" >
+        FINISH_ADVISE = #{finishAdvise,jdbcType=VARCHAR},
+      </if>
+      <if test="finishApplyDoc != null" >
+        FINISH_APPLY_DOC = #{finishApplyDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="finishRecordDoc != null" >
+        FINISH_RECORD_DOC = #{finishRecordDoc,jdbcType=VARCHAR},
+      </if>
+      <if test="agreeAmount != null" >
+        AGREE_AMOUNT = #{agreeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="qsdPic != null" >
+        QSD_PIC = #{qsdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="bglxdPic != null" >
+        BGLXD_PIC = #{bglxdPic,jdbcType=VARCHAR},
+      </if>
+      <if test="gcqzdPic != null" >
+        GCQZD_PIC = #{gcqzdPic,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.Project" >
+    update hz_project
+    set PROJECT = #{project,jdbcType=VARCHAR},
+      PROJECT_PIC = #{projectPic,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      PROSPECT_UNIT = #{prospectUnit,jdbcType=VARCHAR},
+      DESIGIN_UNIT = #{desiginUnit,jdbcType=VARCHAR},
+      BUDGET_UNIT = #{budgetUnit,jdbcType=VARCHAR},
+      BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      AUDIT_AMOUNT = #{auditAmount,jdbcType=DOUBLE},
+      SUPERVISION_UNIT = #{supervisionUnit,jdbcType=VARCHAR},
+      BUILD_BEGIN_TIME = #{buildBeginTime,jdbcType=VARCHAR},
+      BUILD_FINISH_TIME = #{buildFinishTime,jdbcType=VARCHAR},
+      COMPLETE_CHECK_TIME = #{completeCheckTime,jdbcType=VARCHAR},
+      COMPLETE_CHECK_PIC = #{completeCheckPic,jdbcType=VARCHAR},
+      CITY_SUPPLY = #{citySupply,jdbcType=DOUBLE},
+      STATE = #{state,jdbcType=INTEGER},
+      STREET_SUPPLY = #{streetSupply,jdbcType=DOUBLE},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+      RECORD_CODE = #{recordCode,jdbcType=VARCHAR},
+      BDST_NUM = #{bdstNum,jdbcType=INTEGER},
+      MANAGER = #{manager,jdbcType=VARCHAR},
+      PROJECT_BODY = #{projectBody,jdbcType=VARCHAR},
+      FINISH_PROBLEM = #{finishProblem,jdbcType=VARCHAR},
+      FINISH_ADVISE = #{finishAdvise,jdbcType=VARCHAR},
+      FINISH_APPLY_DOC = #{finishApplyDoc,jdbcType=VARCHAR},
+      FINISH_RECORD_DOC = #{finishRecordDoc,jdbcType=VARCHAR},
+      AGREE_AMOUNT = #{agreeAmount,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      QSD_PIC = #{qsdPic,jdbcType=VARCHAR},
+      BGLXD_PIC = #{bglxdPic,jdbcType=VARCHAR},
+      GCQZD_PIC = #{gcqzdPic,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

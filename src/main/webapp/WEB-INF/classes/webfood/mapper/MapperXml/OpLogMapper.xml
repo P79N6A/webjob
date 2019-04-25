@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.OpLogMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.OpLog" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="CLIENT_ID" property="clientId" jdbcType="INTEGER" />
+    <result column="METHODNAME" property="methodname" jdbcType="VARCHAR" />
+    <result column="PARAS" property="paras" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CLIENT_ID, METHODNAME, PARAS, IP, REMARK, COMMENTS, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_log
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_log
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.OpLog" >
+    insert into hz_log (ID, CLIENT_ID, METHODNAME, 
+      PARAS, IP, REMARK, 
+      COMMENTS, CREATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{methodname,jdbcType=VARCHAR}, 
+      #{paras,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{comments,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.OpLog" >
+    insert into hz_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="clientId != null" >
+        CLIENT_ID,
+      </if>
+      <if test="methodname != null" >
+        METHODNAME,
+      </if>
+      <if test="paras != null" >
+        PARAS,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="comments != null" >
+        COMMENTS,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null" >
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="methodname != null" >
+        #{methodname,jdbcType=VARCHAR},
+      </if>
+      <if test="paras != null" >
+        #{paras,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.OpLog" >
+    update hz_log
+    <set >
+      <if test="clientId != null" >
+        CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="methodname != null" >
+        METHODNAME = #{methodname,jdbcType=VARCHAR},
+      </if>
+      <if test="paras != null" >
+        PARAS = #{paras,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="comments != null" >
+        COMMENTS = #{comments,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.OpLog" >
+    update hz_log
+    set CLIENT_ID = #{clientId,jdbcType=INTEGER},
+      METHODNAME = #{methodname,jdbcType=VARCHAR},
+      PARAS = #{paras,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      COMMENTS = #{comments,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

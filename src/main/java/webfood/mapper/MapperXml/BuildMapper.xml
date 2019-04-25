@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.BuildMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.Build" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="BUILD_UNIT" property="buildUnit" jdbcType="VARCHAR" />
+    <result column="LEADER" property="leader" jdbcType="VARCHAR" />
+    <result column="SEX" property="sex" jdbcType="VARCHAR" />
+    <result column="NATION" property="nation" jdbcType="VARCHAR" />
+    <result column="ORIGO" property="origo" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="IDCARD" property="idcard" jdbcType="VARCHAR" />
+    <result column="PROJECT_SCOPE" property="projectScope" jdbcType="VARCHAR" />
+    <result column="ADVANCE_ABILITY" property="advanceAbility" jdbcType="VARCHAR" />
+    <result column="WORKER_NUM" property="workerNum" jdbcType="INTEGER" />
+    <result column="DEVICES" property="devices" jdbcType="VARCHAR" />
+    <result column="PROJECT_HISTORY" property="projectHistory" jdbcType="VARCHAR" />
+    <result column="PIC" property="pic" jdbcType="VARCHAR" />
+    <result column="LEADER_CARDNO" property="leaderCardno" jdbcType="VARCHAR" />
+    <result column="HEAD" property="head" jdbcType="VARCHAR" />
+    <result column="HEAD_PHONE" property="headPhone" jdbcType="VARCHAR" />
+    <result column="HEAD_CARDNO" property="headCardno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, BUILD_UNIT, LEADER, SEX, NATION, ORIGO, REMARK, CREATE_TIME, PHONE, ADDRESS, 
+    MOBILE, IDCARD, PROJECT_SCOPE, ADVANCE_ABILITY, WORKER_NUM, DEVICES, PROJECT_HISTORY, 
+    PIC, LEADER_CARDNO, HEAD, HEAD_PHONE, HEAD_CARDNO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_build
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="queryAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_build
+  </select>
+  <select id="queryAllByUnit" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_build
+    where BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_build
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.Build" >
+    insert into hz_build (ID, BUILD_UNIT, LEADER, 
+      SEX, NATION, ORIGO, 
+      REMARK, CREATE_TIME, PHONE, 
+      ADDRESS, MOBILE, IDCARD, 
+      PROJECT_SCOPE, ADVANCE_ABILITY, WORKER_NUM, 
+      DEVICES, PROJECT_HISTORY, PIC, 
+      LEADER_CARDNO, HEAD, HEAD_PHONE, 
+      HEAD_CARDNO)
+    values (#{id,jdbcType=INTEGER}, #{buildUnit,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, #{origo,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{idcard,jdbcType=VARCHAR}, 
+      #{projectScope,jdbcType=VARCHAR}, #{advanceAbility,jdbcType=VARCHAR}, #{workerNum,jdbcType=INTEGER}, 
+      #{devices,jdbcType=VARCHAR}, #{projectHistory,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, 
+      #{leaderCardno,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR}, #{headPhone,jdbcType=VARCHAR}, 
+      #{headCardno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.Build" >
+    insert into hz_build
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT,
+      </if>
+      <if test="leader != null" >
+        LEADER,
+      </if>
+      <if test="sex != null" >
+        SEX,
+      </if>
+      <if test="nation != null" >
+        NATION,
+      </if>
+      <if test="origo != null" >
+        ORIGO,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="idcard != null" >
+        IDCARD,
+      </if>
+      <if test="projectScope != null" >
+        PROJECT_SCOPE,
+      </if>
+      <if test="advanceAbility != null" >
+        ADVANCE_ABILITY,
+      </if>
+      <if test="workerNum != null" >
+        WORKER_NUM,
+      </if>
+      <if test="devices != null" >
+        DEVICES,
+      </if>
+      <if test="projectHistory != null" >
+        PROJECT_HISTORY,
+      </if>
+      <if test="pic != null" >
+        PIC,
+      </if>
+      <if test="leaderCardno != null" >
+        LEADER_CARDNO,
+      </if>
+      <if test="head != null" >
+        HEAD,
+      </if>
+      <if test="headPhone != null" >
+        HEAD_PHONE,
+      </if>
+      <if test="headCardno != null" >
+        HEAD_CARDNO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buildUnit != null" >
+        #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="origo != null" >
+        #{origo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="projectScope != null" >
+        #{projectScope,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceAbility != null" >
+        #{advanceAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="workerNum != null" >
+        #{workerNum,jdbcType=INTEGER},
+      </if>
+      <if test="devices != null" >
+        #{devices,jdbcType=VARCHAR},
+      </if>
+      <if test="projectHistory != null" >
+        #{projectHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderCardno != null" >
+        #{leaderCardno,jdbcType=VARCHAR},
+      </if>
+      <if test="head != null" >
+        #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="headPhone != null" >
+        #{headPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="headCardno != null" >
+        #{headCardno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.Build" >
+    update hz_build
+    <set >
+      <if test="buildUnit != null" >
+        BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        LEADER = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        SEX = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="origo != null" >
+        ORIGO = #{origo,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null" >
+        IDCARD = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="projectScope != null" >
+        PROJECT_SCOPE = #{projectScope,jdbcType=VARCHAR},
+      </if>
+      <if test="advanceAbility != null" >
+        ADVANCE_ABILITY = #{advanceAbility,jdbcType=VARCHAR},
+      </if>
+      <if test="workerNum != null" >
+        WORKER_NUM = #{workerNum,jdbcType=INTEGER},
+      </if>
+      <if test="devices != null" >
+        DEVICES = #{devices,jdbcType=VARCHAR},
+      </if>
+      <if test="projectHistory != null" >
+        PROJECT_HISTORY = #{projectHistory,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        PIC = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="leaderCardno != null" >
+        LEADER_CARDNO = #{leaderCardno,jdbcType=VARCHAR},
+      </if>
+      <if test="head != null" >
+        HEAD = #{head,jdbcType=VARCHAR},
+      </if>
+      <if test="headPhone != null" >
+        HEAD_PHONE = #{headPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="headCardno != null" >
+        HEAD_CARDNO = #{headCardno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.Build" >
+    update hz_build
+    set BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      LEADER = #{leader,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=VARCHAR},
+      NATION = #{nation,jdbcType=VARCHAR},
+      ORIGO = #{origo,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      MOBILE = #{mobile,jdbcType=VARCHAR},
+      IDCARD = #{idcard,jdbcType=VARCHAR},
+      PROJECT_SCOPE = #{projectScope,jdbcType=VARCHAR},
+      ADVANCE_ABILITY = #{advanceAbility,jdbcType=VARCHAR},
+      WORKER_NUM = #{workerNum,jdbcType=INTEGER},
+      DEVICES = #{devices,jdbcType=VARCHAR},
+      PROJECT_HISTORY = #{projectHistory,jdbcType=VARCHAR},
+      PIC = #{pic,jdbcType=VARCHAR},
+      LEADER_CARDNO = #{leaderCardno,jdbcType=VARCHAR},
+      HEAD = #{head,jdbcType=VARCHAR},
+      HEAD_PHONE = #{headPhone,jdbcType=VARCHAR},
+      HEAD_CARDNO = #{headCardno,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

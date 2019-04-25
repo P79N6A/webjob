@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>index</title>
+<link href="../css/index.css" rel="stylesheet">
+<link href="../plug-in/boxDialog/dist/skins/default.css" rel="stylesheet">
+</head>
+<body>
+    <script type="text/javascript" src="../js/html5.min.js"></script>
+    <!--页面容器-->
+    <div class="page">
+        <!--页面头部-->
+        <header class="header" id="header">
+            <div class="wrap">
+                <!--logo盒-->
+                <section class="logoBox" id="logoBox">
+                    <img src="../images/logo.png" height="41" width="44" alt="" class="logoPic" id="logoPic">
+                    <span class="logoName" id="logoName">研发项目管理系统</span>
+                </section>
+                <!--logo盒结束-->
+                <!--用户盒-->
+                <section class="userBox" id="userBox">
+                    <img src="#" alt="" class="userPic" id="userPic"/>
+                    <span class="userName" id="userName">李日朗</span>
+                    <span class="separate">|</span>
+                    <span class="logout" id="logout"><a href="login.html">退出</a></span>
+                </section>
+                <!--用户盒结束-->
+            </div>
+        </header>
+        <!--页面头部结束-->
+        <div class="container">
+            <div class="wrap">
+                <!--页面主体-->
+                <section class="main" id="main">
+                    <input type="hidden" id="role" value="admin">
+                    <!--导航栏-->
+                    <nav class="nav">
+                        <!--admin导航栏-->
+                        <ul class="admin list">
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="cyclePic"></i>
+                                    <span>项目周期</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listItemFirst"><a href="cycle.html" target="contents">新建项目</a></li>
+                                    <li class="listItemFirst"><a href="myProjects.html" target="contents">我参与的项目</a></li>
+                                </ul>
+                            </li>
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="queryPic"></i>
+                                    <span>统计查询</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listSecond">
+                                        <div class="menu">
+                                            <i class="caret"></i>
+                                            <span>数据概要</span>
+                                        </div>
+                                        <ul class="item">
+                                            <li class="listItemSecond"><a href="summaryData.html" target="contents">项目概要数据</a></li>
+                                            <li class="listItemSecond" data-src="underway.html"><a href="summaryDataTab.html" target="contents">进行中的项目</a></li>
+                                            <li class="listItemSecond" data-src="recentlyCompleted.html"><a href="summaryDataTab.html" target="contents">最近完成的项目</a></li>
+                                            <li class="listItemSecond" data-src="aboutToExpire.html"><a href="summaryDataTab.html" target="contents">即将到期的项目</a></li>
+                                            <li class="listItemSecond" data-src="suspend.html"><a href="summaryDataTab.html" target="contents">暂停的项目</a></li>
+                                            <li class="listItemSecond" data-src="scrap.html"><a href="summaryDataTab.html" target="contents">废弃的项目</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="listItemFirst"><a href="projectQuery.html" target="contents">项目查询</a></li>
+                                    <li class="listItemFirst"><a href="personalQuery.html" target="contents">个人工作状况查询</a></li>
+                                    <li class="listItemFirst"><a href="statistical.html" target="contents">统计报表</a></li>
+                                </ul>
+                            </li>
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="userManPic"></i><span>用户管理</span></a>
+                                </div>
+                                <ul class="item">
+                                   <li class="listItemFirst"><a href="createUser.html" target="contents">创建用户</a></li>
+                                    <li class="listItemFirst"><a href="deleteUser.html" target="contents">删除用户</a></li>
+                                    <li class="listItemFirst"><a href="userModify.html" target="contents">用户修改</a></li>
+                                    <li class="listItemFirst"><a href="userQuery.html" target="contents">用户查询</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--admin导航栏结束-->
+                        <!--项目管理员导航栏-->
+                        <ul class="proMan list">
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="cyclePic"></i>
+                                    <span>项目周期</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listItemFirst"><a href="cycle.html" target="contents">新建项目</a></li>
+                                    <li class="listItemFirst"><a href="myProjects.html" target="contents">我参与的项目</a></li>
+                                </ul>
+                            </li>
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="queryPic"></i>
+                                    <span>统计查询</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listSecond">
+                                        <div class="menu">
+                                            <i class="caret"></i>
+                                            <span>数据概要</span>
+                                        </div>
+                                        <ul class="item">
+                                            <li class="listItemSecond"><a href="summaryData.html" target="contents">项目概要数据</a></li>
+                                            <li class="listItemSecond" data-src="underway.html"><a href="summaryDataTab.html" target="contents">进行中的项目</a></li>
+                                            <li class="listItemSecond" data-src="recentlyCompleted.html"><a href="summaryDataTab.html" target="contents">最近完成的项目</a></li>
+                                            <li class="listItemSecond" data-src="aboutToExpire.html"><a href="summaryDataTab.html" target="contents">即将到期的项目</a></li>
+                                            <li class="listItemSecond" data-src="suspend.html"><a href="summaryDataTab.html" target="contents">暂停的项目</a></li>
+                                            <li class="listItemSecond" data-src="scrap.html"><a href="summaryDataTab.html" target="contents">废弃的项目</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="listItemFirst"><a href="projectQuery.html" target="contents">项目查询</a></li>
+                                    <li class="listItemFirst"><a href="personalQuery.html" target="contents"><span>个人工作状况查询</span></a></li>
+                                    <li class="listItemFirst"><a href="statistical.html" target="contents">统计报表</a></li>
+                                </ul>
+                            </li>    
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="userManPic"></i><span>用户管理</span></a>
+                                </div>
+                                <ul class="item">
+                                   <li class="listItemFirst"><a href="userModify.html" target="contents">用户修改</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--项目管理员导航栏结束-->
+                        <!--开发者导航栏-->
+                        <ul class="developer list">
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="cyclePic"></i>
+                                    <span>项目周期</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listItemFirst"><a href="cycle.html" target="contents">新建项目</a></li>
+                                    <li class="listItemFirst"><a href="myProjects.html" target="contents">我参与的项目</a></li>
+                                </ul>
+                            </li>
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="queryPic"></i>
+                                    <span>统计查询</span>
+                                </div>
+                                <ul class="item">
+                                    <li class="listItemFirst"><a href="myProjects.html" target="contents"><span>个人工作状况查询</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="listFirst">
+                                <div class="menu">
+                                    <i class="userManPic"></i><span>个人信息</span></a>
+                                </div>
+                                <ul class="item">
+                                   <li class="listItemFirst"><a href="userModify.html" target="contents">信息修改</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--开发者导航栏结束-->
+                    </nav>
+                    <!--导航栏结束-->
+                    <!--框架区-->
+                    <iframe src="#" class="contents" id="contents" name="contents" scrolling="no">       
+                    </iframe>
+                    <!--框架区结束-->
+                    <div class="clear"></div>
+                </section>
+                <!--页面主体结束-->
+                <!--页面尾部-->
+                <footer class="footer" id="footer">
+                    Copyright 2015 KONKA. All rights reserved. 
+                </footer>
+                <!--页面尾部结束-->
+            </div>
+        </div>
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script type="text/javascript" src="../js/jquery-1.12.0.min.js"></script>
+    
+    <script type="text/javascript" src="../js/index.js"></script>
+    <script type="text/javascript" src="../plug-in/boxDialog/dist/boxDialog.min.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

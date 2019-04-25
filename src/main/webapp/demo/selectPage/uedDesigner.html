@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>uedDesigner</title>
+<link href="../../css/autocomplete.css" rel="stylesheet">
+<link rel="stylesheet" href="selectPage.css">
+</head>
+<body>
+     <div id="uedDesignerChangeBox">
+        <div class="addBox">
+            <span>请选择UED设计师：</span>
+            <input type="text" name="name" id="name" placeholder="请输入拼音">
+            <input type="button" value="添加" id="add">
+        </div>
+        <div class="box">
+            <div class="persons">
+                
+            </div>
+            <div class="btnBox">
+                <span class="cancle">取消已选</span>
+            </div>
+        </div>
+        <div class="reason">
+            <p>变更原因</p>
+            <textarea name="reason" id="reason" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    <input type="hidden" id="hidden">
+    <input type="hidden" id="hiddenTextarea">
+    <script type="text/javascript" src="../../js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="../../js/pmsmain.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $('#name').keyup(function(){
+            if($(this).val().length==1){
+             getUser($("#name").val());
+            }  
+        });
+    });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $(this).keyup(function(event) {
+                if(event.keyCode==13&&document.activeElement.id=="name"){
+                    $("#add").click();
+                }
+            });
+            if($(window.parent.document).find("#clickChange").val()=="change"){
+                $(".reason").show();
+            }else{
+                $(".reason").hide();
+            }
+            //将变更原因写入隐藏域
+            $("#reason").change(function(){
+                $("#hiddenTextarea").val($(this).val());
+            });
+
+            var str="";
+            //添加
+            $("#add").click(function(){
+                //有效性验证
+                str=$("#name").val().trim();
+                //添加到div中
+                $(".persons").append('<span class="selected selName">'+$("#name").val()+'<span class="delete"></span></span>');
+                //为新添加的人名提供删除事件
+                $(".delete").click(function(){
+                    $(this).parent().remove();
+                    //添加到隐藏域中
+                    setHidden();
+                });
+                //添加到隐藏域中
+                setHidden(); 
+                //清空输入框
+                $($("#name").val(""));
+            });
+            //全部移除
+            $(".cancle").click(function(){
+                $(".persons").empty();
+                //添加到隐藏域中
+                $("#hidden").val("");
+            });
+            //获取初始值
+            str="";
+            str=$(window.parent.document).find("#contents").contents().find("#uedDesigner").val();
+            if(str!=undefined){
+	            str=str.split(";");
+	            if(str.length!=0&&str!=""){
+	                for(var i=0;i<str.length;i++){
+	                    $(".persons").append('<span class="selected selName">'+str[i]+'<span class="delete"></span></span>');
+	                }
+	                str="";
+	                $(".selected").each(function(){
+	                    str+=$(this).text()+";";
+	                });
+	                str=str.substring(0,str.length);
+	                $("#hidden").val(str);
+	                str=""; 
+	            }
+            }
+            
+            //为新添加的人名提供删除事件
+            $(".delete").click(function(){
+                $(this).parent().remove();
+                //添加到隐藏域中
+                setHidden();
+            });
+        });
+        function setHidden(){
+            var str="";
+            $(".selected").each(function(){
+                str+=$(this).text()+";";
+            });
+            str=str.substring(0,str.length);
+            $("#hidden").val(str);
+            str=""; 
+        }
+    </script> 
+</body>
+</html>

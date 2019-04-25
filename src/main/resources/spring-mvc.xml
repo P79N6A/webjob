@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd 
+ 	http://www.springframework.org/schema/aop 
+  	http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 注解支持 -->
+	<mvc:annotation-driven />
+
+	<!-- aop注解支持 -->
+	
+   <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 扫描@Controller组件 -->
+    <!-- 提示：将com.corp.app该为您的业务系统的包路径 -->
+    <context:component-scan base-package="webfood"
+        use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation"
+            expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
+	
+	
+    
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<context:component-scan base-package="webfood.controller">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
+	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 上传设置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding">
+			<value>UTF-8</value>
+		</property>
+		<property name="maxUploadSize">
+			<value>157286400</value><!-- 上传文件大小限制为150M，150*1024*1024 -->
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
+	
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->
+			<mvc:mapping path="/build_add"/>
+			<mvc:mapping path="/build_add1"/>
+			<mvc:mapping path="/build_list"/>
+			<mvc:mapping path="/payinfo_add"/>
+			<mvc:mapping path="/payInfo_add1"/>
+			<mvc:mapping path="/payInfo_once_add1"/>
+			<mvc:mapping path="/process_add"/>
+			<mvc:mapping path="/process_add1"/>
+			<mvc:mapping path="/project_build_add"/>
+			<mvc:mapping path="/project_build_modify"/>
+			<mvc:mapping path="/project_build_add1"/>
+			<mvc:mapping path="/project_add"/>
+			<mvc:mapping path="/update_finish"/>
+			<mvc:mapping path="/project_modify"/>
+			<mvc:mapping path="/update_project"/>
+			<mvc:mapping path="/update_project_finish"/>
+			<mvc:mapping path="/project_view"/>
+			<mvc:mapping path="/update_prospect"/>
+			<mvc:mapping path="/update_budget"/>
+			<mvc:mapping path="/update_design"/>
+			<mvc:mapping path="/update_build"/>
+			<mvc:mapping path="/update_check"/>
+			<mvc:mapping path="/update_build_process"/>
+			<mvc:mapping path="/update_payinfo"/>
+			<mvc:mapping path="/project_delete"/>
+			<mvc:mapping path="/project_add1"/>
+			<mvc:mapping path="/project_list"/>
+			<mvc:mapping path="/project_query"/>
+			<mvc:mapping path="/finishPrint"/>
+			
+			
+			<mvc:mapping path="/sproject_list"/>
+			<mvc:mapping path="/sproject_query"/>
+			<mvc:mapping path="/sproject_modify"/>
+			<mvc:mapping path="/sproject_add1"/>
+			<mvc:mapping path="/update_satter"/>
+			
+			<mvc:mapping path="/update_satter_build"/>
+			<mvc:mapping path="/update_satter_process"/>
+			<mvc:mapping path="/update_satter_finish"/>
+			<mvc:mapping path="/update_satter_payinfo"/>
+			<mvc:mapping path="/update_satter"/>
+			
+			
+			
+			
+			
+			
+			
+ 			<mvc:exclude-mapping path="/index" />
+ 			<mvc:exclude-mapping path="/login" />
+ 			<mvc:exclude-mapping path="/logout" />
+			<bean class="webfood.Interceptor.LoginCheckInterceptor"></bean>
+		</mvc:interceptor>
+		<!-- 当设置多个拦截器时，先按顺序调用preHandle方法，然后逆序调用每个拦截器的postHandle和afterCompletion方法 -->
+	</mvc:interceptors>
+
+
+
+	<!--通用视图解析器 -->
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<mvc:resources mapping="/ckeditor/**" location="/ckeditor/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/upload/**" location="/upload/" />
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/doc/**" location="/doc/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
+	<mvc:resources mapping="/plug-in/**" location="/plug-in/" />
+	<mvc:resources mapping="/error/**" location="/error/" />
+	<mvc:resources mapping="/artDialog/**" location="/artDialog/" />
+	<mvc:resources mapping="/DatePicker/**" location="/DatePicker/" />
+	<mvc:resources mapping="/lib/**" location="/lib/" />
+	<mvc:resources mapping="/city_picker/**" location="/city_picker/" />
+</beans>

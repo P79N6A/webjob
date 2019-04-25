@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.ScatterPicMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.ScatterPic" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PIC" property="pic" jdbcType="VARCHAR" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="PTYPE" property="ptype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PIC, PROJECT_ID, PTYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_scatter_pic
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="queryByPidAndType" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_scatter_pic
+    where PROJECT_ID = #{id,jdbcType=INTEGER} and PTYPE =#{type,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_scatter_pic
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByPid"  >
+    delete from hz_scatter_pic
+    where PROJECT_ID = #{id,jdbcType=INTEGER} and PTYPE =#{type,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.ScatterPic" >
+    insert into hz_scatter_pic (ID, PIC, PROJECT_ID, 
+      PTYPE)
+    values (#{id,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, #{projectId,jdbcType=INTEGER}, 
+      #{ptype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.ScatterPic" >
+    insert into hz_scatter_pic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="pic != null" >
+        PIC,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="ptype != null" >
+        PTYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="ptype != null" >
+        #{ptype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.ScatterPic" >
+    update hz_scatter_pic
+    <set >
+      <if test="pic != null" >
+        PIC = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="ptype != null" >
+        PTYPE = #{ptype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.ScatterPic" >
+    update hz_scatter_pic
+    set PIC = #{pic,jdbcType=VARCHAR},
+      PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      PTYPE = #{ptype,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

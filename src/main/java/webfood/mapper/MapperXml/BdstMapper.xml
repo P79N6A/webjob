@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.BdstMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.Bdst" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT_ID" property="projectId" jdbcType="INTEGER" />
+    <result column="BUDGET_AMOUNT" property="budgetAmount" jdbcType="DOUBLE" />
+    <result column="BIDPRICE" property="bidprice" jdbcType="DOUBLE" />
+    <result column="SUB_TYPE" property="subType" jdbcType="VARCHAR" />
+    <result column="LESSPROFIT_RATE" property="lessprofitRate" jdbcType="VARCHAR" />
+    <result column="PROXY_COMPANY" property="proxyCompany" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT_ID, BUDGET_AMOUNT, BIDPRICE, SUB_TYPE, LESSPROFIT_RATE, PROXY_COMPANY, 
+    REMARK, CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_bdst
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryByPid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_project_bdst
+    where PROJECT_ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_project_bdst
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.Bdst" >
+    insert into hz_project_bdst (ID, PROJECT_ID, BUDGET_AMOUNT, 
+      BIDPRICE, SUB_TYPE, LESSPROFIT_RATE, 
+      PROXY_COMPANY, REMARK, CREATE_TIME
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{budgetAmount,jdbcType=DOUBLE}, 
+      #{bidprice,jdbcType=DOUBLE}, #{subType,jdbcType=VARCHAR}, #{lessprofitRate,jdbcType=VARCHAR}, 
+      #{proxyCompany,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="webfood.model.Bdst" >
+    insert into hz_project_bdst
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="projectId != null" >
+        PROJECT_ID,
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT,
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE,
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE,
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE,
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="budgetAmount != null" >
+        #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="bidprice != null" >
+        #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="subType != null" >
+        #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="lessprofitRate != null" >
+        #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.Bdst" >
+    update hz_project_bdst
+    <set >
+      <if test="projectId != null" >
+        PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="budgetAmount != null" >
+        BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="bidprice != null" >
+        BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      </if>
+      <if test="subType != null" >
+        SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      </if>
+      <if test="lessprofitRate != null" >
+        LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      </if>
+      <if test="proxyCompany != null" >
+        PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.Bdst" >
+    update hz_project_bdst
+    set PROJECT_ID = #{projectId,jdbcType=INTEGER},
+      BUDGET_AMOUNT = #{budgetAmount,jdbcType=DOUBLE},
+      BIDPRICE = #{bidprice,jdbcType=DOUBLE},
+      SUB_TYPE = #{subType,jdbcType=VARCHAR},
+      LESSPROFIT_RATE = #{lessprofitRate,jdbcType=VARCHAR},
+      PROXY_COMPANY = #{proxyCompany,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>statisticalQuerySuspend</title>
+<link href="../css/query.css" rel="stylesheet">
+<link href="../plug-in/My97DatePicker/skin/WdatePicker.css" rel="stylesheet">
+</head>
+<body>
+    <!--页面容器-->
+    <div class="statisticalContents">
+        <!--编码通过表单-->
+        <form action="statisticalQuerySuspendResult.html" class="statisticalQuerySuspendForm" id="statisticalQuerySuspendForm">
+            <fieldset>
+                <label class="label">起止时间</label>
+                <div>
+                    <input type="text" onfocus="WdatePicker()" id="startTime"/><i class="date"></i>
+                </div>
+                <div>
+                    <input type="text" onfocus="WdatePicker()" id="endTime"/><i class="date"></i>
+                </div>
+                <input type="submit" value="查询" id="query"/>
+            </fieldset>
+        </form>
+        <!--编码通过表单结束-->
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../plug-in/My97DatePicker/WdatePicker.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

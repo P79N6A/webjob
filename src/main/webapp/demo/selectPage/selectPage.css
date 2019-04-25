@@ -1,0 +1,112 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2015-12-29 11:26:55
+ * @version $Id$
+ */
+.selected {
+    border:1px solid #78c6f8;
+    background-color: #e0f3ff;
+    color:#66afdf;
+}
+ul {
+    padding: 0px;
+}
+li {
+    list-style-type:none;
+    width:50px;
+    float:left; 
+    margin:5px 10px 5px 0px;
+    border:1px dashed #ccc;
+    cursor:pointer;
+    text-align: center;
+}
+
+.ac_results li {
+    border-top: 1px solid #cfcfcf;
+    cursor: pointer;
+    display: block;
+    font: ;
+    font-size: 12px;
+    margin: 0;
+    overflow: hidden;
+    padding: 4px 5px;
+    width: 130px;
+    text-align: left;
+    }
+.ac_over {
+    background-color: highlight;
+    color: highlighttext;
+}
+#sourceChangeDiv ul li {
+   width:100px; 
+}
+li:hover {
+background-color: #fff;
+color:#66afdf;
+}
+div.btnBox {
+    clear:both;
+    float:right;
+    color:#66afdf;
+    cursor:pointer;
+}
+#levelChangeBox {
+    padding: 10px 0px 0px 10px;
+}
+#sourceChangeBox {
+    padding: 35px 22px 0px;
+}
+#stateChangeBox {
+    padding: 25px 25px 0;
+}
+#managerChangeBox,#leadershipChangeBox,#programDeveloperChangeBox,
+#projectManagerChangeBox,#testingEngineerChangeBox,#uedDesignerChangeBox {
+    padding: 15px 10px 0;
+}
+#levelChangeBox .btnBox {
+    padding-right: 15px;
+    padding-top: 5px;
+}
+#sourceChangeBox .btnBox {
+    padding-right: 15px;
+    padding-top: 40px;
+}
+#stateChangeBox .btnBox {
+    padding-right: 15px;
+    padding-top: 35px;
+}
+.box{
+    padding-right: 15px;
+}
+.addBox{
+    padding-right: 5px;
+}
+.addBox #name{
+    margin:0px 5px;   
+}
+#managerChangeBox .btnBox,#leadershipChangeBox .btnBox,#programDeveloperChangeBox .btnBox,
+#projectManagerChangeBox .btnBox,#testingEngineerChangeBox .btnBox,#uedDesignerChangeBox .btnBox{
+    padding-right: 15px;
+    margin-top: 15px;
+}
+.delete {
+    background: #86e9ff  url(../../images/x.png) no-repeat;
+    display: inline-block;
+    width: 13px;
+    height: 11px;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+.selName {
+    display:inline-block;
+    margin: 10px 10px 10px 0px;
+}
+.reason {
+    clear:both;
+}
+#reason {
+    width:400px;
+    height:250px;
+}

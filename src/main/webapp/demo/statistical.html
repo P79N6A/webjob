@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>statistical</title>
+<link href="../css/query.css" rel="stylesheet">
+</head>
+<body>
+    <!--页面容器-->
+    <div class="tabContents">
+        <h1>统计报表</h1>
+        <ul class="cycleList">
+            <li class="cycle"><a href="statisticalQueryCycle.html" target="tabcontents" id="createProject">项目周期</a></li>
+            <li class="cycle"><a href="statisticalQueryPlan.html" target="tabcontents" id="demand">计划/需求变更</a></li>
+            <li class="cycle"><a href="statisticalQueryDelay.html" target="tabcontents" id="summary">项目延期</a></li>
+            <li class="cycle"><a href="statisticalQuerySuspend.html" target="tabcontents" id="code">暂停/废弃的项目</a></li>
+        </ul>
+        <iframe src="statisticalQueryCycle.html" class="tabcontents" id="tabcontents" name="tabcontents"></iframe>
+    </div>
+    <!--页面容器结束-->
+    <!--脚本-->
+    <script type="text/javascript" src="../js/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="../js/summaryData.js"></script>
+    <!--脚本结束-->
+</body>
+</html>

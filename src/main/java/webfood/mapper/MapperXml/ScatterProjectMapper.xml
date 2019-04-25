@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="webfood.mapper.ScatterProjectMapper" >
+  <resultMap id="BaseResultMap" type="webfood.model.ScatterProject" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="PROJECT" property="project" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="PROJECT_CODE" property="projectCode" jdbcType="VARCHAR" />
+    <result column="MANAGER" property="manager" jdbcType="VARCHAR" />
+    <result column="TYPE" property="type" jdbcType="VARCHAR" />
+    <result column="ACCEPT_DATE" property="acceptDate" jdbcType="VARCHAR" />
+    <result column="DESCRIBETION" property="describetion" jdbcType="VARCHAR" />
+    <result column="SOURCE" property="source" jdbcType="VARCHAR" />
+    <result column="BUILD_UNIT" property="buildUnit" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_PIC" property="buildContractPic" jdbcType="VARCHAR" />
+    <result column="BUILD_CONTRACT_AMOUNT" property="buildContractAmount" jdbcType="DOUBLE" />
+    <result column="BUILD_CONTRACT_PERIOD" property="buildContractPeriod" jdbcType="VARCHAR" />
+    <result column="PAY_WAY" property="payWay" jdbcType="VARCHAR" />
+    <result column="SUB_WAY" property="subWay" jdbcType="VARCHAR" />
+    <result column="COMPLETE_CHECK_TIME" property="completeCheckTime" jdbcType="VARCHAR" />
+    <result column="COMPLETE_CHECK_PIC" property="completeCheckPic" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="INTEGER" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="RECORD_CODE" property="recordCode" jdbcType="VARCHAR" />
+    <result column="PAY_AMOUNT" property="payAmount" jdbcType="DECIMAL" />
+    <result column="PAY_TIME" property="payTime" jdbcType="VARCHAR" />
+    <result column="PAY_TYPE" property="payType" jdbcType="VARCHAR" />
+    <result column="PAY_PIC" property="payPic" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="VARCHAR" />
+    <result column="LEADER" property="leader" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="CARD_NO" property="cardNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PROJECT, ADDRESS, PROJECT_CODE, MANAGER, TYPE, ACCEPT_DATE, DESCRIBETION, SOURCE, 
+    BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, BUILD_CONTRACT_PERIOD, PAY_WAY, 
+    SUB_WAY, COMPLETE_CHECK_TIME, COMPLETE_CHECK_PIC, STATE, REMARK, RECORD_CODE, PAY_AMOUNT, 
+    PAY_TIME, PAY_TYPE, PAY_PIC, CREATE_TIME, UPDATE_TIME, LEADER, PHONE, CARD_NO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_scatter_project
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="query" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_scatter_project
+    where where ${sqlWhere}
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from hz_scatter_project
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hz_scatter_project
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="webfood.model.ScatterProject" >
+    insert into hz_scatter_project (ID, PROJECT, ADDRESS, 
+      PROJECT_CODE, MANAGER, TYPE, 
+      ACCEPT_DATE, DESCRIBETION, SOURCE, 
+      BUILD_UNIT, BUILD_CONTRACT_PIC, BUILD_CONTRACT_AMOUNT, 
+      BUILD_CONTRACT_PERIOD, PAY_WAY, SUB_WAY, 
+      COMPLETE_CHECK_TIME, COMPLETE_CHECK_PIC, STATE, 
+      REMARK, RECORD_CODE, PAY_AMOUNT, 
+      PAY_TIME, PAY_TYPE, PAY_PIC, 
+      CREATE_TIME, UPDATE_TIME, LEADER, 
+      PHONE, CARD_NO)
+    values (#{id,jdbcType=INTEGER}, #{project,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{projectCode,jdbcType=VARCHAR}, #{manager,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
+      #{acceptDate,jdbcType=VARCHAR}, #{describetion,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{buildUnit,jdbcType=VARCHAR}, #{buildContractPic,jdbcType=VARCHAR}, #{buildContractAmount,jdbcType=DOUBLE}, 
+      #{buildContractPeriod,jdbcType=VARCHAR}, #{payWay,jdbcType=VARCHAR}, #{subWay,jdbcType=VARCHAR}, 
+      #{completeCheckTime,jdbcType=VARCHAR}, #{completeCheckPic,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{recordCode,jdbcType=VARCHAR}, #{payAmount,jdbcType=DECIMAL}, 
+      #{payTime,jdbcType=VARCHAR}, #{payType,jdbcType=VARCHAR}, #{payPic,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{updateTime,jdbcType=VARCHAR}, #{leader,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR})
+  </insert>
+  
+<insert id="insertSelective" parameterType="webfood.model.ScatterProject" useGeneratedKeys="true" keyProperty="id" >
+    insert into hz_scatter_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="project != null" >
+        PROJECT,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE,
+      </if>
+      <if test="manager != null" >
+        MANAGER,
+      </if>
+      <if test="type != null" >
+        TYPE,
+      </if>
+      <if test="acceptDate != null" >
+        ACCEPT_DATE,
+      </if>
+      <if test="describetion != null" >
+        DESCRIBETION,
+      </if>
+      <if test="source != null" >
+        SOURCE,
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT,
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC,
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT,
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD,
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY,
+      </if>
+      <if test="subWay != null" >
+        SUB_WAY,
+      </if>
+      <if test="completeCheckTime != null" >
+        COMPLETE_CHECK_TIME,
+      </if>
+      <if test="completeCheckPic != null" >
+        COMPLETE_CHECK_PIC,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="recordCode != null" >
+        RECORD_CODE,
+      </if>
+      <if test="payAmount != null" >
+        PAY_AMOUNT,
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME,
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE,
+      </if>
+      <if test="payPic != null" >
+        PAY_PIC,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="leader != null" >
+        LEADER,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="cardNo != null" >
+        CARD_NO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="project != null" >
+        #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null" >
+        #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptDate != null" >
+        #{acceptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="describetion != null" >
+        #{describetion,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUnit != null" >
+        #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subWay != null" >
+        #{subWay,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckTime != null" >
+        #{completeCheckTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckPic != null" >
+        #{completeCheckPic,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payPic != null" >
+        #{payPic,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="webfood.model.ScatterProject" >
+    update hz_scatter_project
+    <set >
+      <if test="project != null" >
+        PROJECT = #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="projectCode != null" >
+        PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+      </if>
+      <if test="manager != null" >
+        MANAGER = #{manager,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="acceptDate != null" >
+        ACCEPT_DATE = #{acceptDate,jdbcType=VARCHAR},
+      </if>
+      <if test="describetion != null" >
+        DESCRIBETION = #{describetion,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null" >
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="buildUnit != null" >
+        BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractPic != null" >
+        BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      </if>
+      <if test="buildContractAmount != null" >
+        BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="buildContractPeriod != null" >
+        BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="payWay != null" >
+        PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      </if>
+      <if test="subWay != null" >
+        SUB_WAY = #{subWay,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckTime != null" >
+        COMPLETE_CHECK_TIME = #{completeCheckTime,jdbcType=VARCHAR},
+      </if>
+      <if test="completeCheckPic != null" >
+        COMPLETE_CHECK_PIC = #{completeCheckPic,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="recordCode != null" >
+        RECORD_CODE = #{recordCode,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        PAY_AMOUNT = #{payAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="payTime != null" >
+        PAY_TIME = #{payTime,jdbcType=VARCHAR},
+      </if>
+      <if test="payType != null" >
+        PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="payPic != null" >
+        PAY_PIC = #{payPic,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="leader != null" >
+        LEADER = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        CARD_NO = #{cardNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="webfood.model.ScatterProject" >
+    update hz_scatter_project
+    set PROJECT = #{project,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      PROJECT_CODE = #{projectCode,jdbcType=VARCHAR},
+      MANAGER = #{manager,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      ACCEPT_DATE = #{acceptDate,jdbcType=VARCHAR},
+      DESCRIBETION = #{describetion,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      BUILD_UNIT = #{buildUnit,jdbcType=VARCHAR},
+      BUILD_CONTRACT_PIC = #{buildContractPic,jdbcType=VARCHAR},
+      BUILD_CONTRACT_AMOUNT = #{buildContractAmount,jdbcType=DOUBLE},
+      BUILD_CONTRACT_PERIOD = #{buildContractPeriod,jdbcType=VARCHAR},
+      PAY_WAY = #{payWay,jdbcType=VARCHAR},
+      SUB_WAY = #{subWay,jdbcType=VARCHAR},
+      COMPLETE_CHECK_TIME = #{completeCheckTime,jdbcType=VARCHAR},
+      COMPLETE_CHECK_PIC = #{completeCheckPic,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      RECORD_CODE = #{recordCode,jdbcType=VARCHAR},
+      PAY_AMOUNT = #{payAmount,jdbcType=DECIMAL},
+      PAY_TIME = #{payTime,jdbcType=VARCHAR},
+      PAY_TYPE = #{payType,jdbcType=VARCHAR},
+      PAY_PIC = #{payPic,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=VARCHAR},
+      LEADER = #{leader,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      CARD_NO = #{cardNo,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
